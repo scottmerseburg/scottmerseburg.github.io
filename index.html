@@ -3,27 +3,99 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portfolio</title>
-    <meta name="description" content="Min portfolio." />
+    <title>Scott Merseburg — Portfolio</title>
+    <meta name="description" content="Portfolio — Tech Art / Game Dev." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <!-- Header -->
     <header class="site-header">
-      <h1>Portfolio</h1>
+      <div class="header-inner">
+          <a class="logo" href="index.html" aria-label="Home">
+            <span class="logo-name">SCOTT MERSEBURG</span>
+            <span class="logo-title">Technical Artist</span>
+          </a>
+
+        <nav class="nav">
+          <a class="nav-link is-active" href="index.html">Tech Art</a>
+          <a class="nav-link" href="games.html">Game projects</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+
+        <div class="social">
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
     </header>
 
-    <main class="container">
-      <!-- Innehåll kommer här -->
-    </main>
+    <!-- Main -->
+    <main class="page">
 
+      <section id="tech" class="section">
+        <div class="grid">
+
+          <a class="card" href="#" aria-label="X-ray Baggage scanner">
+            <img class="card-img" src="images/workinprogresspic.png" alt="X-ray Baggage scanner" />
+            <div class="card-overlay"></div>
+            <div class="card-text">
+              <h3 class="card-title">X-ray Baggage scanner</h3>
+              <p class="card-sub">Tech Art • Shader / Tools</p>
+            </div>
+          </a>
+
+
+          <a class="card" href="vertex-animation-shader.html" aria-label="Vertex Animation Shader">
+            <img class="card-img" src="images/workinprogresspic.png" alt="Vertex Animation Shader" />
+            <div class="card-overlay"></div>
+            <div class="card-text">
+              <h3 class="card-title">Vertex Animation Shader</h3>
+              <p class="card-sub">Shader • Animation</p>
+            </div>
+          </a>
+
+          <a class="card" href="#" aria-label="Work in progress">
+            <img class="card-img" src="images/workinprogresspic.png" alt="Work in progress" />
+            <div class="card-overlay"></div>
+            <div class="card-text">
+              <h3 class="card-title">Work in progress</h3>
+              <p class="card-sub">Work in progress</p>
+            </div>
+          </a>
+
+
+          <a class="card" href="#" aria-label="Work in progress">
+            <img class="card-img" src="images/workinprogresspic.png"  alt="Work in progress" />
+            <div class="card-overlay"></div>
+            <div class="card-text">
+              <h3 class="card-title">Work in progress</h3>
+              <p class="card-sub">Work in progress</p>
+            </div>
+          </a>
+
+        </div>
+      </section>
+      </main>
+
+      
+
+
+    <!-- Footer -->
     <footer class="site-footer">
-      <small>© <span id="year"></span> Ditt Namn</small>
+      <div class="footer-inner">
+        <a class="footer-link" href="mailto:scottmerseburg@gmail.com">scottmerseburg@gmail.com</a>
+        <span class="footer-dot">•</span>
+        <a class="footer-link" href="tel:+4673511376">+4673511376</a>
+      </div>
     </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>

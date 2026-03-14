@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scott Merseburg — Vertex Animation Shader</title>
+    <meta
+      name="description"
+      content="A technical breakdown of a procedural vertex animation robot shader built in Unity using Shader Graph and C#."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html" aria-label="Home">
+          <span class="logo-name">SCOTT MERSEBURG</span>
+          <span class="logo-title">Technical Artist</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav-link is-active" href="index.html">Tech Art</a>
+          <a class="nav-link" href="games.html">Game projects</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+
+        <div class="social">
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page project-page">
+      <!-- Hero -->
+      <section class="project-hero">
+        <div class="project-hero-copy">
+          <p class="project-kicker">Tech Art • Shader Graph • Unity</p>
+          <h1 class="project-title">Vertex Animation Shader</h1>
+          <p class="project-intro">
+            A procedural robot animation system built with Shader Graph and C#.
+            The goal was to create expressive movement, state-based behavior, and
+            readable visual feedback without relying on a traditional rig.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">Vertex Animation</span>
+            <span class="project-tag">Shader Graph</span>
+            <span class="project-tag">NavMesh AI</span>
+            <span class="project-tag">Procedural Motion</span>
+            <span class="project-tag">Tech Art</span>
+          </div>
+        </div>
+
+        <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            muted
+            playsinline
+            poster="images/workinprogresspic.png"
+          >
+            <source src="videos/robotplaceholder.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <!-- Quick Overview -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Overview</h2>
+          <p>
+            This project explores how far procedural animation can be pushed using
+            mesh masks, Shader Graph, and lightweight gameplay code.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article class="overview-card">
+            <h3>Goal</h3>
+            <p>
+              Build a stylized robot that feels expressive and reactive through
+              shader-driven animation rather than bones or a traditional rig.
+            </p>
+          </article>
+
+          <article class="overview-card">
+            <h3>Focus</h3>
+            <p>
+              Procedural wheel motion, shell turning, scan behavior, antenna motion,
+              emissive state feedback, and readable movement logic.
+            </p>
+          </article>
+
+          <article class="overview-card">
+            <h3>Tools</h3>
+            <p>
+              Unity, Shader Graph, C#, NavMeshAgent, Material Property Blocks,
+              vertex colors, and emissive textures.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Breakdown -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Breakdown</h2>
+          <p>
+            The robot is split into parts using vertex colors, allowing different
+            sections of the mesh to react in unique ways.
+          </p>
+        </div>
+
+        <div class="breakdown-stack">
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Mesh Masks</h3>
+              <p>
+                Vertex color channels were used to isolate different parts of the
+                robot. This made it possible to animate multiple sections of the
+                same mesh independently inside Shader Graph.
+              </p>
+              <ul>
+                <li><strong>R</strong> — outer shell / eye housing</li>
+                <li><strong>G</strong> — one inner wheel</li>
+                <li><strong>B</strong> — the other inner wheel</li>
+                <li><strong>R + G</strong> — inner core logic</li>
+              </ul>
+            </div>
+
+            <div class="breakdown-media">
+              <img src="images/Robot Project/ColorRobot.png" alt="Mask breakdown placeholder" />
+            </div>
+          </article>
+
+          <article class="breakdown-row reverse">
+            <div class="breakdown-text">
+              <h3>Shader-Driven Motion</h3>
+              <p>
+                Each animated part was rotated around its own pivot using
+                <strong>Rotate About Axis</strong>. Instead of one animation clip,
+                the robot is driven by signals such as movement, turning,
+                scanning, and wheel phase.
+              </p>
+              <ul>
+                <li>Shell yaw and tilt</li>
+                <li>Independent wheel rotation</li>
+                <li>Inner core spin</li>
+                <li>Antenna bend and spring motion</li>
+              </ul>
+            </div>
+
+            <div class="breakdown-media">
+              <img src="images/workinprogresspic.png" alt="Shader graph placeholder" />
+            </div>
+          </article>
+
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Behavior Signals from C#</h3>
+              <p>
+                C# was used to calculate stable control signals and pass them into
+                the shader with Material Property Blocks. This made it possible to
+                separate game logic from visual response.
+              </p>
+              <ul>
+                <li><strong>MoveAmount</strong> — movement intensity</li>
+                <li><strong>TurnAmount</strong> — directional turning</li>
+                <li><strong>Alert</strong> — proximity / awareness</li>
+                <li><strong>Wheel angles</strong> — integrated in code for stability</li>
+                <li><strong>State weights</strong> — patrol, scan, chase</li>
+              </ul>
+            </div>
+
+            <div class="breakdown-media">
+              <img src="images/workinprogresspic.png" alt="C# behavior placeholder" />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- States -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Behavior States</h2>
+          <p>
+            The robot uses simple readable states that influence both behavior and
+            visual presentation.
+          </p>
+        </div>
+
+        <div class="state-grid">
+          <article class="state-card">
+            <h3>Patrol</h3>
+            <p>
+              The robot moves between patrol points, with optional wandering around
+              each stop to avoid overly straight and mechanical movement.
+            </p>
+          </article>
+
+          <article class="state-card">
+            <h3>Scan</h3>
+            <p>
+              When idle, the robot pauses, scans the environment, and transitions
+              into a more alert visual state. This was designed to make the AI feel
+              more aware and less robotic in a simple sense.
+            </p>
+          </article>
+
+          <article class="state-card">
+            <h3>Chase</h3>
+            <p>
+              In chase mode, movement becomes more direct and the emissive state
+              shifts to communicate danger and urgency more clearly.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Challenges -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Challenges & Solutions</h2>
+          <p>
+            A large part of the project was solving the friction between AI
+            navigation, procedural animation, and stable shader inputs.
+          </p>
+        </div>
+
+        <div class="challenge-list">
+          <article class="challenge-card">
+            <h3>Wheel flicker and snapping</h3>
+            <p>
+              Computing wheel rotation directly in the shader caused instability
+              when movement values changed rapidly. The final solution was to
+              integrate wheel angles in C# and send the accumulated phase to the
+              shader.
+            </p>
+          </article>
+
+          <article class="challenge-card">
+            <h3>Turn and movement blending</h3>
+            <p>
+              Combining move and turn directly often created spikes or unnatural
+              speed boosts. This was addressed by introducing gating, smoothing,
+              and better separation between movement intent and actual motion.
+            </p>
+          </article>
+
+          <article class="challenge-card">
+            <h3>Scanning while moving</h3>
+            <p>
+              Early versions of the scan state triggered too eagerly. The behavior
+              was refined by using actual velocity checks, scan timing, cooldowns,
+              and explicit stop logic during scan.
+            </p>
+          </article>
+
+          <article class="challenge-card">
+            <h3>State-driven visuals</h3>
+            <p>
+              Patrol, scan, and chase states were connected to the emissive system
+              through smoothly blended weights, allowing the same robot to feel
+              calm, aware, or aggressive depending on context.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- What I Learned -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>What I Learned</h2>
+          <p>
+            This project became a strong lesson in how technical art works best
+            when code and shaders each handle the right responsibilities.
+          </p>
+        </div>
+
+        <div class="learned-panel">
+          <p>
+            The biggest takeaway was that procedural animation is not only about
+            creating motion — it is about feeding the right kind of signal into
+            the right part of the system.
+          </p>
+          <p>
+            C# handled timing, state, wheel phase, and stable behavior signals,
+            while Shader Graph handled deformation, masking, layering, and visual
+            character.
+          </p>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Gallery</h2>
+          <p>Placeholder images for now — replace these with screenshots, graph captures, or GIFs later.</p>
+        </div>
+
+        <div class="project-gallery">
+          <img src="images/workinprogresspic.png" alt="Project gallery placeholder 1" />
+          <img src="images/workinprogresspic.png" alt="Project gallery placeholder 2" />
+          <img src="images/workinprogresspic.png" alt="Project gallery placeholder 3" />
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="footer-link" href="mailto:scottmerseburg@gmail.com">scottmerseburg@gmail.com</a>
+        <span class="footer-dot">•</span>
+        <a class="footer-link" href="tel:+4673511376">+4673511376</a>
+      </div>
+    </footer>
+  </body>
+</html>
