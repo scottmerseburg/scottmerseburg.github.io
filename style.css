@@ -264,9 +264,9 @@ body {
 
 .project-hero {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: clamp(20px, 4vw, 40px);
-  align-items: center;
+  align-items: start;
   margin-bottom: clamp(36px, 5vw, 72px);
 }
 

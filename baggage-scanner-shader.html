@@ -46,21 +46,13 @@
         <div class="project-hero-copy">
           <p class="project-kicker">Tech Art • Shader Graph • Unity</p>
           <h1 class="project-title">Baggage Scanner Shader</h1>
-          <p class="project-intro">
-            A Unity shader project recreating the visual effect of an airport-style baggage scanner, 
-            revealing internal contents, material types, and thickness information.
-          </p>
-
-          <div class="project-tags">
-            <span class="project-tag">Shader Graph</span>
-            <span class="project-tag">Unity</span>
-            <span class="project-tag">Tech Art</span>
-          </div>
         </div>
 
         <div class="project-hero-media">
           <video
             class="project-video"
+            autoplay
+            loop
             controls
             muted
             playsinline
@@ -74,14 +66,29 @@
 
       <!-- Quick Overview -->
       <section class="project-section">
-        <div class="section-heading">
-          <h2>Overview</h2>
-          <p>
-            This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
-            The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
-            To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures. 
-            A large part of the work also involved preparation outside Unity, including UV cleanup, texture baking, and pipeline work across multiple tools.
-          </p>
+
+        <div class="breakdown-stack">
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Overview</h3>
+            <p>
+              This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
+              The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
+              To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures. 
+              A large part of the work also involved preparation outside Unity, including UV cleanup, texture baking, and pipeline work across multiple tools.
+            </p>
+            </div>
+
+             <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            muted
+            playsinline
+          >
+            <source src="videos/BaggageScannerVideos/BaggageScanCase.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
       </section>
@@ -91,25 +98,22 @@
         <div class="section-heading">
           <h2>Breakdown</h2>
           <p>
-            The robot is split into parts using vertex colors, allowing different
-            sections of the mesh to react in unique ways.
+            Breakdown on how the shader works and how its made.
           </p>
         </div>
 
         <div class="breakdown-stack">
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Thickness Map</h3>
+              <h3>Textures and effects used</h3>
               <p>
-                Vertex color channels were used to isolate different parts of the
-                robot. This made it possible to animate multiple sections of the
-                same mesh independently inside Shader Graph.
+                Here is a breakdown of how each indivudual object works.
               </p>
               <ul>
-                <li><strong>R</strong> — outer shell / eye housing</li>
-                <li><strong>G</strong> — one inner wheel</li>
-                <li><strong>B</strong> — the other inner wheel</li>
-                <li><strong>R + G</strong> — inner core logic</li>
+                <li><strong>Thickness Map</strong> — Texture to illustrate the objects thickness</li>
+                <li><strong>Material Map</strong> — Material Map to map a color to each part of the object</li>
+                <li><strong>Fresnel Effect</strong> — Fresnel effect to get the seethrough scanned look</li>
+                <li><strong>Final Shader</strong> — Conbinding all of the above to get the Baggage scan effect</li>
               </ul>
             </div>
 
@@ -120,64 +124,11 @@
             muted
             playsinline
           >
-            <source src="videos/BaggageScannerVideos/ScanObjectThicknessOpaque.mp4" type="video/mp4" />
+            <source src="videos/BaggageScannerVideos/BaggageScannerObjectBreakdown.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
           </article>
-
-          <article class="breakdown-row">
-            <div class="breakdown-text">
-              <h3>Material Map</h3>
-              <p>
-                Each animated part was rotated around its own pivot using
-                <strong>Rotate About Axis</strong>. Instead of one animation clip,
-                the robot is driven by signals such as movement, turning,
-                scanning, and wheel phase.
-              </p>
-              <ul>
-                <li>Shell yaw and tilt</li>
-                <li>Independent wheel rotation</li>
-                <li>Inner core spin</li>
-                <li>Antenna bend and spring motion</li>
-              </ul>
-            </div>
-
-            <div class="project-hero-media">
-          <video
-            class="project-video"
-            controls
-            muted
-            playsinline
-          >
-            <source src="videos/BaggageScannerVideos/ScanObjectMaterialColor.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-          </article>
-
-          <article class="breakdown-row">
-            <div class="breakdown-text">
-              <h3>Behavior Signals from C#</h3>
-              <p>
-                C# was used to calculate stable control signals and pass them into
-                the shader with Material Property Blocks. This made it possible to
-                separate game logic from visual response.
-              </p>
-              <ul>
-                <li><strong>MoveAmount</strong> — movement intensity</li>
-                <li><strong>TurnAmount</strong> — directional turning</li>
-                <li><strong>Alert</strong> — proximity / awareness</li>
-                <li><strong>Wheel angles</strong> — integrated in code for stability</li>
-                <li><strong>State weights</strong> — patrol, scan, chase</li>
-              </ul>
-            </div>
-
-            <div class="breakdown-media">
-              <img src="images/Robot Project/RobotPlaceholderPic.png" alt="C# behavior placeholder" />
-            </div>
-          </article>
-        </div>
       </section>
 
       <!-- States -->
