@@ -6,7 +6,7 @@
     <title>Scott Merseburg — Baggagescanner Shader</title>
     <meta
       name="description"
-      content="A technical breakdown of a procedural vertex animation robot shader built in Unity using Shader Graph and C#."
+      content="A technical breakdown of a baggage scanner shader built in Unity using Shader Graph and C#."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,18 +45,15 @@
       <section class="project-hero">
         <div class="project-hero-copy">
           <p class="project-kicker">Tech Art • Shader Graph • Unity</p>
-          <h1 class="project-title">Vertex Animation Shader</h1>
+          <h1 class="project-title">Baggage Scanner Shader</h1>
           <p class="project-intro">
-            A procedural robot animation system built with Shader Graph and C#.
-            The goal was to create expressive movement, state-based behavior, and
-            readable visual feedback without relying on a traditional rig.
+            A Unity shader project recreating the visual effect of an airport-style baggage scanner, 
+            revealing internal contents, material types, and thickness information.
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">Vertex Animation</span>
             <span class="project-tag">Shader Graph</span>
-            <span class="project-tag">NavMesh AI</span>
-            <span class="project-tag">Procedural Motion</span>
+            <span class="project-tag">Unity</span>
             <span class="project-tag">Tech Art</span>
           </div>
         </div>
@@ -67,9 +64,9 @@
             controls
             muted
             playsinline
-            poster="images/Robot Project/RobotPlaceholderPic.png"
+            poster="images/Baggage Scanner Project/BaggageScanner.png"
           >
-            <source src="videos/robotplaceholder.mp4" type="video/mp4" />
+            <source src="videos/BaggageScannerVideos/BaggageScanScene.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -80,36 +77,13 @@
         <div class="section-heading">
           <h2>Overview</h2>
           <p>
-            This project explores how far procedural animation can be pushed using
-            mesh masks, Shader Graph, and lightweight gameplay code.
+            This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
+            The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
+            To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures. 
+            A large part of the work also involved preparation outside Unity, including UV cleanup, texture baking, and pipeline work across multiple tools.
           </p>
         </div>
 
-        <div class="overview-grid">
-          <article class="overview-card">
-            <h3>Goal</h3>
-            <p>
-              Build a stylized robot that feels expressive and reactive through
-              shader-driven animation rather than bones or a traditional rig.
-            </p>
-          </article>
-
-          <article class="overview-card">
-            <h3>Focus</h3>
-            <p>
-              Procedural wheel motion, shell turning, scan behavior, antenna motion,
-              emissive state feedback, and readable movement logic.
-            </p>
-          </article>
-
-          <article class="overview-card">
-            <h3>Tools</h3>
-            <p>
-              Unity, Shader Graph, C#, NavMeshAgent, Material Property Blocks,
-              vertex colors, and emissive textures.
-            </p>
-          </article>
-        </div>
       </section>
 
       <!-- Breakdown -->
@@ -125,7 +99,7 @@
         <div class="breakdown-stack">
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Mesh Masks</h3>
+              <h3>Thickness Map</h3>
               <p>
                 Vertex color channels were used to isolate different parts of the
                 robot. This made it possible to animate multiple sections of the
@@ -139,14 +113,22 @@
               </ul>
             </div>
 
-            <div class="breakdown-media">
-              <img src="images/Robot Project/ColorRobot.png" alt="Mask breakdown placeholder" />
-            </div>
+             <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            muted
+            playsinline
+          >
+            <source src="videos/BaggageScannerVideos/ScanObjectThicknessOpaque.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
           </article>
 
-          <article class="breakdown-row reverse">
+          <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Shader-Driven Motion</h3>
+              <h3>Material Map</h3>
               <p>
                 Each animated part was rotated around its own pivot using
                 <strong>Rotate About Axis</strong>. Instead of one animation clip,
@@ -161,9 +143,17 @@
               </ul>
             </div>
 
-            <div class="breakdown-media">
-              <img src="images/Robot Project/RobotPlaceholderPic.png" alt="Shader graph placeholder" />
-            </div>
+            <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            muted
+            playsinline
+          >
+            <source src="videos/BaggageScannerVideos/ScanObjectMaterialColor.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
           </article>
 
           <article class="breakdown-row">
