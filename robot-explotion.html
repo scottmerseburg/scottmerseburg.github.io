@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scott Merseburg — Robot Explosion</title>
+    <meta
+      name="description"
+      content="A technical breakdown of a robot explosion effect created in Unity using particle systems, flipbooks from EmberGen, and custom textures."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html" aria-label="Home">
+          <span class="logo-name">SCOTT MERSEBURG</span>
+          <span class="logo-title">Technical Artist</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav-link is-active" href="index.html">Tech Art</a>
+          <a class="nav-link" href="games.html">Game projects</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+
+        <div class="social">
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="social-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page project-page">
+      <!-- Hero -->
+      <section class="project-hero">
+        <div class="project-hero-copy">
+          <p class="project-kicker">Tech Art • VFX • Unity</p>
+          <h1 class="project-title">Robot Explosion</h1>
+        </div>
+
+        <div class="project-hero-media">
+          <video
+            class="project-video"
+            autoplay
+            loop
+            controls
+            muted
+            playsinline
+            poster="images/RobotExplosion/RobotExplosionPoster.png"
+          >
+            <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="project-section">
+        <div class="breakdown-stack">
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Overview</h3>
+              <p>
+                This project is a smaller side project where I created an explosion effect
+                for a small rolling robot that is part of another portfolio piece.
+                The effect was built in Unity using the Particle System, with flipbooks created
+                in EmberGen for the explosion and smoke. The goal was to make the explosion feel
+                punchy, readable, and visually satisfying while also supporting the destruction
+                of the robot itself.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Breakdown -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Breakdown</h2>
+          <p>
+            A breakdown of the different particle elements and supporting effects used to build the explosion.
+          </p>
+        </div>
+
+        <div class="breakdown-stack">
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Explosion components</h3>
+              <p>
+                The final effect is built from several layered particle elements working together.
+              </p>
+              <ul>
+                <li><strong>Main Explosion</strong> — Flipbook created in EmberGen.</li>
+                <li><strong>Smoke</strong> — Smoke flipbook also created in EmberGen.</li>
+                <li><strong>Sparks / Embers</strong> — Small glowing particles using Unity’s default particle system.</li>
+                <li><strong>Big Sparks</strong> — Larger spark particles to add impact and variation.</li>
+                <li><strong>Ground Glow</strong> — A glow effect placed on the ground to enhance the blast.</li>
+                <li><strong>Background Glow</strong> — Extra light bloom behind the explosion to push the intensity.</li>
+                <li><strong>Explosion Decal</strong> — A decal made in Photoshop.</li>
+                <li><strong>Pebbles / Debris</strong> — Small debris pieces thrown outward from the explosion.</li>
+                <li><strong>Shockwave</strong> — A shockwave texture created in Photoshop.</li>
+                <li><strong>Scrap with Smoke Trail</strong> — Broken robot parts flying out with smoke trails attached.</li>
+              </ul>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Destruction setup</h3>
+              <p>
+                The explosion is not only a particle effect — it also changes the robot model itself.
+              </p>
+              <ul>
+                <li>
+                  <strong>Mesh Swap</strong> — When the explosion happens, the original robot mesh is disabled.
+                </li>
+                <li>
+                  <strong>Destroyed Version</strong> — A damaged version of the robot is spawned in its place.
+                </li>
+                <li>
+                  <strong>Dissolve Shader</strong> — The destroyed mesh uses a dissolve shader to make it feel burnt and broken apart.
+                </li>
+                <li>
+                  <strong>Smoke Trail</strong> — The destroyed robot keeps emitting smoke to show that it is still damaged after the blast.
+                </li>
+              </ul>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Challenges -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Challenges</h2>
+        </div>
+
+        <div class="learned-panel">
+          <ul>
+            <li>
+              Since I was new to EmberGen, there was a slow start while learning the basics
+              and figuring out how to create an explosion that both looked good and could be used effectively in-engine.
+            </li>
+            <li>
+              One challenge was timing. A large part of making the effect feel convincing
+              was getting the different particle elements to appear at the right moment so the explosion felt powerful and believable.
+            </li>
+            <li>
+              I also had, and still have, some issues with layering and rendering between particles,
+              which required testing and adjustment to get the elements to read clearly together.
+            </li>
+            <li>
+              I experimented with six-point lighting for the explosion, but I did not have enough time
+              to make it work as well as I wanted.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- If I had more time -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>If I had more time</h2>
+        </div>
+
+        <div class="learned-panel">
+          <ul>
+            <li>
+              I would have liked to spend more time exploring six-point lighting
+              and pushing the lighting response of the explosion further.
+            </li>
+            <li>
+              I would also have wanted to continue refining the timing of the effect
+              so that each layer of the explosion worked together even better.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Gallery</h2>
+          <p>
+            Placeholder images for now — replace these with screenshots, flipbook previews, or effect stills later.
+          </p>
+        </div>
+
+        <div class="project-gallery">
+          <img src="images/RobotExplosion/RobotExplosion1.png" alt="Robot explosion screenshot 1" />
+          <img src="images/RobotExplosion/RobotExplosion2.png" alt="Robot explosion screenshot 2" />
+          <img src="images/RobotExplosion/RobotExplosion3.png" alt="Robot explosion screenshot 3" />
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="footer-link" href="mailto:scottmerseburg@gmail.com">scottmerseburg@gmail.com</a>
+        <span class="footer-dot">•</span>
+        <a class="footer-link" href="tel:+4673511376">+4673511376</a>
+      </div>
+    </footer>
+  </body>
+</html>

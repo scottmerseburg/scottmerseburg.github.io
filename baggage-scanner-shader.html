@@ -74,8 +74,7 @@
             <p>
               This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
               The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
-              To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures. 
-              A large part of the work also involved preparation outside Unity, including UV cleanup, texture baking, and pipeline work across multiple tools.
+              To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures.
             </p>
             </div>
 
@@ -138,7 +137,7 @@
         <div class="breakdown-text"> 
           <h3>Stencil and depth buffers</h3> 
           <p> Breakdown of how the scanning effect works. </p> 
-          <ul> <li><strong>Occlusion Box</strong> — I use a simple invisible box to detect when the bag is hidden behind other geometry. This determines when the scan should activate. 
+          <ul> <li><strong>Occlusion Box</strong> — I use a simple invisible box to detect when the bag is hidden behind other geometry. This determines when the scan should activate. and shader material will bw applied. 
           </li> <li><strong>Stencil Mask</strong> — When the bag is occluded, I write to the stencil buffer to mark exactly where the effect is allowed to appear.
           </li> <li><strong>Content inside</strong> — Finally, I render the contents of the bag, but only inside the stencil mask, making them visible only when the scan is active.
           </li> </ul> 
