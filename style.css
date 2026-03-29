@@ -376,6 +376,10 @@ body {
   opacity: 0.88;
 }
 
+.learned-panel ul li {
+  margin-bottom: 12px;
+}
+
 .breakdown-stack {
   display: grid;
   gap: 22px;

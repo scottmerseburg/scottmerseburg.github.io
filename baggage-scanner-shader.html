@@ -83,6 +83,8 @@
           <video
             class="project-video"
             controls
+            autoplay
+            loop
             muted
             playsinline
           >
@@ -121,6 +123,8 @@
           <video
             class="project-video"
             controls
+            autoplay
+            loop
             muted
             playsinline
           >
@@ -129,117 +133,75 @@
           </video>
         </div>
           </article>
+
+          <article class="breakdown-row">
+        <div class="breakdown-text"> 
+          <h3>Stencil and depth buffers</h3> 
+          <p> Breakdown of how the scanning effect works. </p> 
+          <ul> <li><strong>Occlusion Box</strong> — I use a simple invisible box to detect when the bag is hidden behind other geometry. This determines when the scan should activate. 
+          </li> <li><strong>Stencil Mask</strong> — When the bag is occluded, I write to the stencil buffer to mark exactly where the effect is allowed to appear.
+          </li> <li><strong>Content inside</strong> — Finally, I render the contents of the bag, but only inside the stencil mask, making them visible only when the scan is active.
+          </li> </ul> 
+        </div> 
+          
+          <div class="project-hero-media"> <video class="project-video" 
+            controls
+            autoplay
+            loop 
+            muted 
+            playsinline > 
+            <source src="videos/BaggageScannerVideos/BaggageScanScene.mp4" type="video/mp4" /> Your browser does not support the video tag. 
+          </video> 
+        </div>
+          </article>
+
       </section>
 
-      <!-- States -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Behavior States</h2>
-          <p>
-            The robot uses simple readable states that influence both behavior and
-            visual presentation.
-          </p>
-        </div>
+      
 
-        <div class="state-grid">
-          <article class="state-card">
-            <h3>Patrol</h3>
-            <p>
-              The robot moves between patrol points, with optional wandering around
-              each stop to avoid overly straight and mechanical movement.
-            </p>
-          </article>
-
-          <article class="state-card">
-            <h3>Scan</h3>
-            <p>
-              When idle, the robot pauses, scans the environment, and transitions
-              into a more alert visual state. This was designed to make the AI feel
-              more aware and less robotic in a simple sense.
-            </p>
-          </article>
-
-          <article class="state-card">
-            <h3>Chase</h3>
-            <p>
-              In chase mode, movement becomes more direct and the emissive state
-              shifts to communicate danger and urgency more clearly.
-            </p>
-          </article>
-        </div>
-      </section>
 
       <!-- Challenges -->
-      <section class="project-section">
+       <section class="project-section">
         <div class="section-heading">
-          <h2>Challenges & Solutions</h2>
-          <p>
-            A large part of the project was solving the friction between AI
-            navigation, procedural animation, and stable shader inputs.
-          </p>
-        </div>
-
-        <div class="challenge-list">
-          <article class="challenge-card">
-            <h3>Wheel flicker and snapping</h3>
-            <p>
-              Computing wheel rotation directly in the shader caused instability
-              when movement values changed rapidly. The final solution was to
-              integrate wheel angles in C# and send the accumulated phase to the
-              shader.
-            </p>
-          </article>
-
-          <article class="challenge-card">
-            <h3>Turn and movement blending</h3>
-            <p>
-              Combining move and turn directly often created spikes or unnatural
-              speed boosts. This was addressed by introducing gating, smoothing,
-              and better separation between movement intent and actual motion.
-            </p>
-          </article>
-
-          <article class="challenge-card">
-            <h3>Scanning while moving</h3>
-            <p>
-              Early versions of the scan state triggered too eagerly. The behavior
-              was refined by using actual velocity checks, scan timing, cooldowns,
-              and explicit stop logic during scan.
-            </p>
-          </article>
-
-          <article class="challenge-card">
-            <h3>State-driven visuals</h3>
-            <p>
-              Patrol, scan, and chase states were connected to the emissive system
-              through smoothly blended weights, allowing the same robot to feel
-              calm, aware, or aggressive depending on context.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- What I Learned -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>What I Learned</h2>
-          <p>
-            This project became a strong lesson in how technical art works best
-            when code and shaders each handle the right responsibilities.
-          </p>
+          <h2>Challanges</h2>
         </div>
 
         <div class="learned-panel">
-          <p>
-            The biggest takeaway was that procedural animation is not only about
-            creating motion — it is about feeding the right kind of signal into
-            the right part of the system.
-          </p>
-          <p>
-            C# handled timing, state, wheel phase, and stable behavior signals,
-            while Shader Graph handled deformation, masking, layering, and visual
-            character.
-          </p>
+
+          <ul> <li>A large part of the work happened outside of Unity. 
+            There was a lot of preparation involved, including fixing UV maps for the objects, 
+            baking thickness maps for each asset, and creating material textures for every object. 
+          </li> <li>Another challenge was achieving the right transparent look. Visually, 
+            the thickness information baked in Substance Painter did not always reflect the actual thickness in a believable way, 
+            so it required a bit of testing and adjustment.
+          </li> <li>Since i havent worked alot with render passes, buffers or stencils Understanding and 
+            getting the shader to render when it was suppose too took abit of reaserch and testing.
+          </li> </ul> 
+
+  
+        </div>
+      </section>
+     
+
+      <!-- If i had more time-->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>If i had more time</h2>
+        </div>
+
+        <div class="learned-panel">
+          <ul>
+            <li>
+              If I had more time, I would have liked to explore further automation to reduce the amount of preparation work. For example, 
+              I would have wanted to develop a tool inside the engine that could automatically calculate the thickness of the entire baggage. 
+              I also would have liked to make the shader setup more automatic, so that the whole bag could use a single material instead of requiring one material per object.
+            </li>
+            <li>
+              It would also have been nice to spend more time polishing the visual look. I think there is potential for more interesting results by basing 
+              color values on the density of each object, making them appear darker or lighter depending on the data. I also would have liked to experiment with post-processing 
+              effects to create more of a scanner-like feel.
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -251,9 +213,9 @@
         </div>
 
         <div class="project-gallery">
-          <img src="images/Robot Project/RobotPlaceholderPic.png" alt="Project gallery placeholder 1" />
-          <img src="images/Robot Project/RobotPlaceholderPic.png" alt="Project gallery placeholder 2" />
-          <img src="images/Robot Project/RobotPlaceholderPic.png" alt="Project gallery placeholder 3" />
+          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 1" />
+          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 2" />
+          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 3" />
         </div>
       </section>
     </main>
