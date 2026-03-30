@@ -65,17 +65,24 @@
       </section>
 
       <!-- Quick Overview -->
-      <section class="project-section">
+    <section class="project-section">
+        <div class="section-heading">
+          <h2>Overview and introduction</h2>
+          <p>
+            Breakdown on how the shader works and how its made.
+          </p>
+        </div>
 
         <div class="breakdown-stack">
-          <article class="breakdown-row">
+
+           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Overview</h3>
-            <p>
-              This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
-              The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
-              To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures.
-            </p>
+              <h3>Introduction</h3>
+              <p>
+                This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
+                The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
+                To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures.
+              </p>
             </div>
 
              <div class="project-hero-media">
@@ -91,19 +98,8 @@
             Your browser does not support the video tag.
           </video>
         </div>
+          </article>
 
-      </section>
-
-      <!-- Breakdown -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Breakdown</h2>
-          <p>
-            Breakdown on how the shader works and how its made.
-          </p>
-        </div>
-
-        <div class="breakdown-stack">
           <article class="breakdown-row">
             <div class="breakdown-text">
               <h3>Textures and effects used</h3>
@@ -158,6 +154,140 @@
 
       
 
+      <!-- Breakdown -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Breakdown</h2>
+          <p>
+            Breakdown on how the shader works and how its made.
+          </p>
+        </div>
+
+
+          <div class="breakdown-stack">
+
+
+                      <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Thickness Texture</h3>
+              <p>
+                Created in Substance Painter, this texture represents the thickness of the object using grayscale values based on ray-cast depth. 
+                Darker areas indicate thicker parts of the mesh, while lighter areas represent thinner sections.
+              </p>
+            </div>
+
+             <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="videos/BaggageScannerVideos/ScanObjectThicknessOpaque.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+          </article>
+
+          <article class="breakdown-row">
+        <div class="breakdown-text"> 
+          <h3>Material Texture</h3> 
+          <p> 
+            This texture was created to define different material types across the object. Using grayscale values, different areas are assigned material categories such as Organic, 
+            Non-Organic, Metals, and Heavy Metals. 
+            In the shader, these values are masked and remapped to the correct material colors, which are controlled through global parameters.
+          </p> 
+        </div> 
+          
+          <div class="project-hero-media"> <video class="project-video" 
+            controls
+            autoplay
+            loop 
+            muted 
+            playsinline > 
+            <source src="videos/BaggageScannerVideos/BaggageScannerMaterialBreakdown.mov" type="video/mp4" /> Your browser does not support the video tag. 
+          </video> 
+        </div>
+          </article>
+
+
+
+            <article class="breakdown-row">
+        <div class="breakdown-text"> 
+          <h3>Fresnel Effect</h3> 
+          <p> 
+            Fresnel is a effect that takes camera position to account and not draws pixles that have the normals to the camera. 
+            This is used in the shader to create glowing edges on the objects. The frensel effect is added with the material color and put into the 
+            emmissive input in the master stack reslulting in a glowing edge around the objects
+          </p> 
+        </div> 
+          
+          <div class="project-hero-media"> <video class="project-video" 
+            controls
+            autoplay
+            loop 
+            muted 
+            playsinline > 
+            <source src="videos/BaggageScannerVideos/BaggageScannerFresnelBreakdown.mov" type="video/mp4" /> Your browser does not support the video tag. 
+          </video> 
+        </div>
+        </article>
+
+        <article class="breakdown-row">
+        <div class="breakdown-text"> 
+          <h3>Final Shader</h3> 
+          <p> 
+            So the final shader is a combination of all these effects the thickness texture is combined with the material texture to create a 
+            albedo map that is connected to the base map in the main shader input. The Fresnel and material cobination is added to the emmisive 
+            to create a glowing edge.
+
+          </p> 
+        </div> 
+          
+          <div class="project-hero-media"> <video class="project-video" 
+            controls
+            autoplay
+            loop 
+            muted 
+            playsinline > 
+            <source src="videos/BaggageScannerVideos/BaggageScannerObjectBreakdown.mov" type="video/mp4" /> Your browser does not support the video tag. 
+          </video> 
+        </div>
+          </article>
+
+          
+        <article class="breakdown-row">
+        <div class="breakdown-text"> 
+          <h3>Occlution and stencil buffer</h3> 
+          <p> 
+            The red box represents the occluder — a simple invisible proxy used to detect when the bag is behind other geometry. When this happens, 
+            I write a value to the stencil buffer to mark the active scan area.
+            The white material is a debug visualization of the stencil mask. It shows exactly where rendering is allowed. In the final version, this area is instead filled 
+            with the transparent X-ray material.
+            Finally, both the bag and its contents are rendered only inside this masked region, making them visible only when the scan is active.
+
+          </p> 
+        </div> 
+          
+          <div class="project-hero-media"> <video class="project-video" 
+            controls
+            autoplay
+            loop 
+            muted 
+            playsinline > 
+            <source src="videos/BaggageScannerVideos/BaggageScannerOcclutionStencil.mp4" type="video/mp4" /> Your browser does not support the video tag. 
+          </video> 
+        </div>
+          </article>
+
+      </section>
+      </div>
+
+
+      
+
 
       <!-- Challenges -->
        <section class="project-section">
@@ -204,27 +334,7 @@
         </div>
       </section>
 
-      <!-- Gallery -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Gallery</h2>
-          <p>Placeholder images for now — replace these with screenshots, graph captures, or GIFs later.</p>
-        </div>
 
-        <div class="project-gallery">
-          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 1" />
-          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 2" />
-          <img src="images/Baggage Scanner Project/BaggageScanner.png" alt="Project gallery placeholder 3" />
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <a class="footer-link" href="mailto:scottmerseburg@gmail.com">scottmerseburg@gmail.com</a>
-        <span class="footer-dot">•</span>
-        <a class="footer-link" href="tel:+4673511376">+4673511376</a>
-      </div>
     </footer>
   </body>
 </html>
