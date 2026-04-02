@@ -64,52 +64,45 @@
         </div>
       </section>
 
-      <!-- Overview -->
-      <section class="project-section">
+      <!-- Quick Overview -->
+    <section class="project-section">
+        <div class="section-heading">
+          <h2>Overview and introduction</h2>
+        </div>
+
         <div class="breakdown-stack">
-          <article class="breakdown-row">
+
+           <article class="breakdown-row">
             <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                This project is a smaller side project where I created an explosion effect
-                for a small rolling robot that is part of another portfolio piece.
-                The effect was built in Unity using the Particle System, with flipbooks created
-                in EmberGen for the explosion and smoke. The goal was to make the explosion feel
-                punchy, readable, and visually satisfying while also supporting the destruction
-                of the robot itself.
+                  This project is a smaller side project where I created an explosion effect
+                  for a small rolling robot that is part of another portfolio piece.
+                  The effect was built in Unity using the Particle System, with flipbooks created
+                  in EmberGen for the explosion and smoke. The goal was to make the explosion feel
+                  punchy, readable, and visually satisfying while also supporting the destruction
+                  of the robot itself.
               </p>
             </div>
 
-            <div class="project-hero-media">
-              <video
-                class="project-video"
-                autoplay
-                loop
-                controls
-                muted
-                playsinline
-              >
-                <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+             <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
           </article>
-        </div>
-      </section>
 
-      <!-- Breakdown -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Breakdown</h2>
-          <p>
-            A breakdown of the different particle elements and supporting effects used to build the explosion.
-          </p>
-        </div>
-
-        <div class="breakdown-stack">
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Explosion components</h3>
+               <h3>Explosion components</h3>
               <p>
                 The final effect is built from several layered particle elements working together.
               </p>
@@ -127,22 +120,22 @@
               </ul>
             </div>
 
-            <div class="project-hero-media">
-              <video
-                class="project-video"
-                autoplay
-                loop
-                controls
-                muted
-                playsinline
-              >
-                <source src="videos/Robot Explotion/RobotExplotion.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+             <div class="project-hero-media">
+          <video
+            class="project-video"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="videos/Robot Explotion/RobotExplotionOverviewBreakdown.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
           </article>
 
-          <article class="breakdown-row">
+           <article class="breakdown-row">
             <div class="breakdown-text">
               <h3>Destruction setup</h3>
               <p>
@@ -178,8 +171,230 @@
               </video>
             </div>
           </article>
+      </section>
+
+      <!-- Breakdown -->
+      <section class="project-section">
+        <div class="section-heading">
+          <h2>Breakdown</h2>
+          <p>
+            A breakdown of the different particle elements and supporting effects used to build the explosion.
+          </p>
+        </div>
+        <!-- Main Explotion-->
+        <div class="breakdown-stack">
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Main Explotion</h3>
+              <p>
+                  I created a flipbook texture sheet in EmberGen and exported it into Unity. 
+                  The texture sheet is 8x8 and is applied to a Unity particle material, 
+                  which is then used in a particle system. The particles are spawned in a 
+                  sphere, with a short lifetime and color fading over lifetime. The particles 
+                  also use billboarded sprites to always face the camera.              
+              </p>
+
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/MainExplotion.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <!-- Smoke -->
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Main Smoke</h3>
+              <p>
+                I use the same texture sheet as the main explosion, but only the top half where the smoke 
+                exists. This is also spawned from a sphere, but with a slightly longer lifetime. 
+                I added upward velocity and some drag to make the movement feel more like smoke.
+              </p>
+
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/MainSmoke.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <!-- Sparks and Embers -->
+          <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Sparks and Embers</h3>
+              <p>
+                I use two different types of sparks: one larger and faster type, and one smaller and slower type that slows down over time and becomes falling embers. These particles use Unity’s default particle system, 
+                and I stretched them based on velocity to give them a more dynamic look.
+              </p>
+
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/Sparks.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <!-- Glows-->
+            <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Ground and background glow</h3>
+              <p>
+                I created two types of glows to enhance the brightness and intensity of the explosion. One is horizontally billboarded, 
+                and the other uses normal billboarding. Together, they create both a ground glow and a background glow behind the explosion.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/Glow.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+        
+
+            <!-- Explotion Decal-->
+            <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Explotion decal</h3>
+              <p>
+                I created an impact decal in Photoshop to leave a permanent mark after the explosion. 
+                The decal is used as a particle with horizontal billboarding so it stays flat on the ground, giving the illusion of a hole or impact mark on the surface.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/ImpactDecal.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <!-- Debris and pebbels-->
+           <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Debris and pebbles</h3>
+              <p>
+                To add some environmental destruction, I added small debris particles to give the illusion of pieces flying out from the floor during the explosion. 
+                These use mesh particles, and unfortunately I did not have time to create my own mesh, so I used a default cube.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/Pebbels.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+
+          <!-- Shockwave-->
+           <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Shockwave</h3>
+              <p>
+                I created a simple shockwave using a texture made in Photoshop. It is basically a wobbly grayscale circle that is horizontally 
+                billboarded and expands quickly when the explosion goes off. This was added to give more life and force to the explosion.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline 
+              >
+                <source src="videos/Robot Explotion/Shockwave.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <!-- Robot scrap-->
+           <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Scrap with smoke trail</h3>
+              <p>
+                I added scrap, or destroyed robot parts, flying out from the robot when it explodes. This is done using mesh particles. I attached a smoke trail to each particle using a smoke material and texture. 
+                I also added a dissolve material to the mesh with an orange glowing edge to give it more of an exploded feel.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/Scrap.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
         </div>
       </section>
+
+     
 
       <!-- Challenges -->
       <section class="project-section">
