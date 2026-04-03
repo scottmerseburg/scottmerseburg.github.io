@@ -322,6 +322,17 @@ body {
   object-fit: cover;
 }
 
+.project-image {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: #d8d1bf;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+}
+
 .project-section {
   margin-bottom: clamp(32px, 5vw, 72px);
 }

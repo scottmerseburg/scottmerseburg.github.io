@@ -79,9 +79,7 @@
                   This project is a smaller side project where I created an explosion effect
                   for a small rolling robot that is part of another portfolio piece.
                   The effect was built in Unity using the Particle System, with flipbooks created
-                  in EmberGen for the explosion and smoke. The goal was to make the explosion feel
-                  punchy, readable, and visually satisfying while also supporting the destruction
-                  of the robot itself.
+                  in EmberGen for the explosion and smoke. The goal was to make a explotion for my robot that feels satisfying to watch and reflect a exploding robot as good as possible.
               </p>
             </div>
 
@@ -188,7 +186,7 @@
               <h3>Main Explotion</h3>
               <p>
                   I created a flipbook texture sheet in EmberGen and exported it into Unity. 
-                  The texture sheet is 8x8 and is applied to a Unity particle material, 
+                  The texture sheet is 10x10 and is applied to a Unity particle material, 
                   which is then used in a particle system. The particles are spawned in a 
                   sphere, with a short lifetime and color fading over lifetime. The particles 
                   also use billboarded sprites to always face the camera.              
@@ -237,6 +235,25 @@
               </video>
             </div>
           </article>
+
+
+          <article class="breakdown-row">
+          <div class="breakdown-text">
+            <h3>Explotion and smoke flipbook</h3>
+            <p>
+              Here is a picture of the flipbook that i use for the explotion and smoke. It is made with EmberGen using the default explotion preset, 
+              adjusting values like color, fuel intenisty, votex size velocty wind direction to get the desired look i wanted.
+            </p>
+          </div>
+
+          <div class="project-hero-media">
+            <img
+              class="project-image"
+              src="images/Robot Explotion/DefaultExplotionFlipbook.png"
+              alt="Main Explosion breakdown image"
+            />
+          </div>
+        </article>
 
           <!-- Sparks and Embers -->
           <article class="breakdown-row">
@@ -301,18 +318,12 @@
               </p>
             </div>
 
-            <div class="project-hero-media">
-              <video
-                class="project-video"
-                autoplay
-                loop
-                controls
-                muted
-                playsinline
-              >
-                <source src="videos/Robot Explotion/ImpactDecal.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div class="project-hero-media">
+              <img
+                class="project-image"
+                src="images/Robot Explotion/ImpactExpoltion.png"
+                alt="Explosion impact decal"
+              />
             </div>
           </article>
 
@@ -354,6 +365,7 @@
 
             <div class="project-hero-media">
               <video
+                id="shockwave-video"
                 class="project-video"
                 autoplay
                 loop
@@ -365,6 +377,12 @@
                 Your browser does not support the video tag.
               </video>
             </div>
+
+            <script>
+            const shockwaveVideo = document.getElementById("shockwave-video");
+            shockwaveVideo.playbackRate = 0.4;
+          </script>
+
           </article>
 
           <!-- Robot scrap-->
@@ -391,6 +409,38 @@
               </video>
             </div>
           </article>
+
+          <!-- Destroeyed robot-->
+           <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Destroyed Robot and Desolve</h3>
+              <p>
+                The destroyed robot is a prefab that spawns in with a directional force when the explotion happens replacing the current mesh. 
+                This is done in a C# script. The robot has a custom desolve shader to create the feeling of it being destroyed it also has the original textures 
+                bur tinted gray and also has a simple noise texture in a darker gray to create a dirt effect.  The dissolve effect works by sampling a noise on the 
+                alpha and with tha alpha theshlod controlling what pixels should be rendered based on the npoise i use the same nose with a small offest to create a 
+                glowing edge in the edge of where the dissolve affects. in the video this is displade by a sine over time to easier visulaize the effect but on defaulkt 
+                it is set to a default value. It also has a particle system with a slow smoke rising effect.
+
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/Robot Explotion/Destroyed robot.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          
         </div>
       </section>
 
@@ -405,16 +455,15 @@
         <div class="learned-panel">
           <ul>
             <li>
-              Since I was new to EmberGen, there was a slow start while learning the basics
-              and figuring out how to create an explosion that both looked good and could be used effectively in-engine.
+              Since I was new to EmberGen there was a slow start while learning the basics
+              and figuring out how to create an explosion that looked good and worked in engine.
             </li>
             <li>
               One challenge was timing. A large part of making the effect feel convincing
               was getting the different particle elements to appear at the right moment so the explosion felt powerful and believable.
             </li>
             <li>
-              I also had, and still have, some issues with layering and rendering between particles,
-              which required testing and adjustment to get the elements to read clearly together.
+              I also had, and still have some issues with layering and rendering between particles. So would like to have had more time on polishing that
             </li>
             <li>
               I experimented with six-point lighting for the explosion, but I did not have enough time
@@ -433,30 +482,13 @@
         <div class="learned-panel">
           <ul>
             <li>
-              I would have liked to spend more time exploring six-point lighting
-              and pushing the lighting response of the explosion further.
+              I would have liked to spend more time exploring six-point lighting. I started testing it out but the time ran out
             </li>
             <li>
               I would also have wanted to continue refining the timing of the effect
               so that each layer of the explosion worked together even better.
             </li>
           </ul>
-        </div>
-      </section>
-
-      <!-- Gallery -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Gallery</h2>
-          <p>
-            Placeholder images for now — replace these with screenshots, flipbook previews, or effect stills later.
-          </p>
-        </div>
-
-        <div class="project-gallery">
-          <img src="images/RobotExplosion/RobotExplosion1.png" alt="Robot explosion screenshot 1" />
-          <img src="images/RobotExplosion/RobotExplosion2.png" alt="Robot explosion screenshot 2" />
-          <img src="images/RobotExplosion/RobotExplosion3.png" alt="Robot explosion screenshot 3" />
         </div>
       </section>
     </main>
