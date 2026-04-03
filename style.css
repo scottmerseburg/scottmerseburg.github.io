@@ -178,6 +178,7 @@ body {
   transform: translateY(6px);
   opacity: 0;
   transition: opacity 220ms ease, transform 220ms ease;
+  color: white;
 }
 
 .card-title {
