@@ -29,14 +29,35 @@
 
         <nav class="nav">
           <a class="nav-link is-active" href="index.html">Tech Art</a>
-          <a class="nav-link" href="games.html">Game projects</a>
+            <!-- <a class="nav-link" href="games.html">Game projects</a> -->
           <a class="nav-link" href="about.html">About</a>
         </nav>
 
-        <div class="social">
-          <a class="social-link" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="social-link" href="#" target="_blank" rel="noreferrer">Instagram</a>
-        </div>
+                <div class="social">
+        <a
+          class="social-link social-icon"
+          href="https://www.linkedin.com/in/scott-merseburg-14581a16b/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.03 2.03 0 0 0 3.2 5.03c0 1.12.9 2.03 2.02 2.03h.03a2.03 2.03 0 1 0 0-4.06ZM20.8 12.74c0-3.46-1.85-5.07-4.31-5.07-1.99 0-2.88 1.09-3.38 1.86V8.5H9.73c.04.68 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.12-.92.27-.68.9-1.39 1.96-1.39 1.38 0 1.93 1.05 1.93 2.59V20H20.5v-6.86Z"/>
+          </svg>
+        </a>
+
+        <a
+          class="social-link social-icon"
+          href="https://github.com/scottmerseburg?tab=overview&from=2026-03-01&to=2026-03-31"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.1 3.3 9.42 7.87 10.95.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.03 0 0 .97-.31 3.19 1.17a11.1 11.1 0 0 1 5.8 0c2.21-1.48 3.18-1.17 3.18-1.17.63 1.58.24 2.74.12 3.03.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.67.42.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.21.67.8.56A11.54 11.54 0 0 0 23.5 12.03C23.5 5.66 18.35.5 12 .5Z"/>
+          </svg>
+        </a>
+      </div>
       </div>
     </header>
 
@@ -75,11 +96,10 @@
             <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                This project explores procedural animation for a small robot built in Unity
-                using Shader Graph and C#. The goal was to create expressive movement and
-                readable state-based behavior without relying on a traditional rig or
-                animation clips. Instead, the robot is driven by shader-controlled vertex
-                motion and gameplay signals coming from code.
+                This project focuses on building a small robot driven by procedural animation
+                instead of traditional skeletal animation. Different parts of the robot are controlled
+                through vertex color masks, while C# sends runtime values into Shader Graph to drive
+                movement, turning, state changes, and visual feedback.
               </p>
             </div>
 
@@ -92,7 +112,7 @@
                 muted
                 playsinline
               >
-                <source src="videos/robotplaceholder.mp4" type="video/mp4" />
+                <source src="videos/PatrollingRobot/Overview Main Shader.mov" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -102,64 +122,32 @@
             <div class="breakdown-text">
               <h3>Main components</h3>
               <p>
-                The final setup is built from several technical parts working together.
+                The final setup is built around a few key systems working together.
               </p>
               <ul>
-                <li><strong>Vertex Color Masks</strong> — Used to separate different parts of the robot mesh.</li>
-                <li><strong>Shader Graph Animation</strong> — Controls shell turning, wheel motion, and antenna movement.</li>
-                <li><strong>Procedural Motion</strong> — Movement is generated through signals instead of baked animation clips.</li>
-                <li><strong>C# Control Signals</strong> — Handles movement, turning, wheel phase, alert states, and scan timing.</li>
-                <li><strong>Material Property Blocks</strong> — Used to send dynamic values from code into the shader.</li>
-                <li><strong>State-Based Behavior</strong> — Patrol, scan, and chase affect both motion and visuals.</li>
-                <li><strong>Emissive Feedback</strong> — Color and intensity shift depending on the current robot state.</li>
-              </ul>
-            </div>
-
-            <div class="project-hero-media">
-              <img
-                class="project-image"
-                src="images/Robot Project/ColorRobot.png"
-                alt="Vertex animation shader overview"
-              />
-            </div>
-          </article>
-
-          <article class="breakdown-row">
-            <div class="breakdown-text">
-              <h3>Behavior setup</h3>
-              <p>
-                The robot uses simple AI-driven states to make the movement feel more alive.
-                The shader handles the visual deformation, while C# provides stable values for
-                movement, turning, and state logic. This separation made it easier to control
-                both the look and the behavior of the robot in a clean way.
-              </p>
-              <ul>
-                <li>
-                  <strong>Patrol</strong> — The robot moves between points with readable procedural motion.
-                </li>
-                <li>
-                  <strong>Scan</strong> — The robot pauses, rotates, and feels more alert while checking its surroundings.
-                </li>
-                <li>
-                  <strong>Chase</strong> — The robot becomes more direct and aggressive, with clearer emissive feedback.
-                </li>
+                <li><strong>Vertex Color Masks</strong> — Divide the mesh into separate animation areas</li>
+                <li><strong>Shader Graph Animation</strong> — Drives shell, wheels, core, and antenna motion</li>
+                <li><strong>C# Control Signals</strong> — Handles movement, turning, states, and wheel phase</li>
+                <li><strong>Material Property Blocks</strong> — Send dynamic runtime values into the shader</li>
+                <li><strong>State-Based Feedback</strong> — Idle, Patrol, and scan affect both motion and emissive response</li>
               </ul>
             </div>
 
             <div class="project-hero-media">
               <video
                 class="project-video"
+                controls
                 autoplay
                 loop
-                controls
                 muted
                 playsinline
               >
-                <source src="videos/robotplaceholder.mp4" type="video/mp4" />
+                <source src="videos/PatrollingRobot/RobotVertexMasks.mov" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </article>
+
         </div>
       </section>
 
@@ -178,24 +166,30 @@
             <div class="breakdown-text">
               <h3>Mesh masks</h3>
               <p>
-                Vertex color channels were used to isolate different areas of the robot mesh.
-                This made it possible to control separate parts of the same mesh independently
-                inside Shader Graph without needing multiple skinned meshes or bones.
+                Vertex color channels were used to split the robot mesh into different motion zones.
+                This made it possible to control several parts of the same mesh independently inside
+                Shader Graph without using bones.
               </p>
               <ul>
                 <li><strong>R</strong> — Outer shell / eye housing</li>
                 <li><strong>G</strong> — One inner wheel</li>
                 <li><strong>B</strong> — The other inner wheel</li>
-                <li><strong>Combined channels</strong> — Used for inner core logic and extra motion control</li>
+                <li><strong>Combined channels</strong> — Used for inner core and extra motion logic</li>
               </ul>
             </div>
 
             <div class="project-hero-media">
-              <img
-                class="project-image"
-                src="images/Robot Project/ColorRobot.png"
-                alt="Vertex color mask breakdown"
-              />
+              <video
+                class="project-video"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                <source src="videos/PatrollingRobot/RobotVertexMasks.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </article>
 
@@ -204,25 +198,30 @@
             <div class="breakdown-text">
               <h3>Shader-driven motion</h3>
               <p>
-                The main animation is done directly in Shader Graph. Different mesh parts are
-                rotated around custom pivots using shader logic such as Rotate About Axis.
-                Instead of one fixed animation, the robot responds dynamically to movement and
-                state values sent in from code.
+                Most of the robot animation is created directly in Shader Graph. Different mesh parts
+                are rotated around custom pivots, allowing the robot to react dynamically to movement
+                and state values at runtime.
               </p>
               <ul>
-                <li><strong>Shell rotation</strong> — Used for turning and directional feedback</li>
-                <li><strong>Wheel rotation</strong> — Driven procedurally based on movement values</li>
-                <li><strong>Inner core motion</strong> — Adds secondary motion and detail</li>
-                <li><strong>Antenna animation</strong> — Uses bend and spring-like motion for extra character</li>
+                <li><strong>Shell motion</strong> — Turning, tilt, and directional feedback</li>
+                <li><strong>Wheel motion</strong> — Procedural forward and turning behavior</li>
+                <li><strong>Inner core</strong> — Secondary rotation for added motion detail</li>
+                <li><strong>Antenna</strong> — Bend and spring-based secondary motion</li>
               </ul>
             </div>
 
             <div class="project-hero-media">
-              <img
-                class="project-image"
-                src="images/Robot Project/RobotPlaceholderPic.png"
-                alt="Shader graph breakdown"
-              />
+              <video
+                class="project-video"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                <source src="videos/PatrollingRobot/RobotMotionStates.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </article>
 
@@ -231,42 +230,14 @@
             <div class="breakdown-text">
               <h3>Behavior signals from C#</h3>
               <p>
-                C# was used to calculate stable inputs and pass them into the shader through
-                Material Property Blocks. This helped separate gameplay logic from visual
-                animation and made the system more reliable than trying to calculate everything
-                directly in the shader.
+                C# handles the robot’s behavior logic and sends a small set of control values into the shader.
+                These values drive the procedural animation and make it easier to keep the visual motion stable and readable.
               </p>
               <ul>
-                <li><strong>MoveAmount</strong> — Controls movement intensity</li>
-                <li><strong>TurnAmount</strong> — Controls turning direction and strength</li>
-                <li><strong>Alert</strong> — A value for awareness and state feedback</li>
-                <li><strong>Wheel phase</strong> — Integrated in code for stable procedural wheel motion</li>
-                <li><strong>State weights</strong> — Blend values between patrol, scan, and chase</li>
-              </ul>
-            </div>
-
-            <div class="project-hero-media">
-              <img
-                class="project-image"
-                src="images/Robot Project/RobotPlaceholderPic.png"
-                alt="C# behavior breakdown"
-              />
-            </div>
-          </article>
-
-          <!-- Behavior States -->
-          <article class="breakdown-row">
-            <div class="breakdown-text">
-              <h3>Behavior states</h3>
-              <p>
-                The robot uses a few simple states to make it feel more alive and readable.
-                These states affect both the movement pattern and the shader response, which
-                gives the robot a stronger sense of awareness and intention.
-              </p>
-              <ul>
-                <li><strong>Patrol</strong> — Calm navigation between patrol points</li>
-                <li><strong>Scan</strong> — Idle state with extra motion and environmental awareness</li>
-                <li><strong>Chase</strong> — Faster and more focused movement with stronger visual feedback</li>
+                <li><strong>MoveAmount</strong> — how much the robot is moving</li>
+                <li><strong>TurnAmount</strong> — how much the robot is turning</li>
+                <li><strong>Antenna Bend</strong> — controls the antenna motion and adds secondary movement</li>
+                <li><strong>Wheel Angle</strong> — a stable wheel rotation value calculated in code</li>
               </ul>
             </div>
 
@@ -279,35 +250,80 @@
                 muted
                 playsinline
               >
-                <source src="videos/robotplaceholder.mp4" type="video/mp4" />
+                <source src="videos/PatrollingRobot/InputsStates.mov" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </article>
 
-          <!-- Emissive Feedback -->
+          <!-- Behavior States -->
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Emissive state feedback</h3>
+              <h3>States and visual feedback</h3>
               <p>
-                Emissive values were used to help communicate the robot’s current state. By
-                blending between different intensities and colors, the same robot can feel calm,
-                alert, or aggressive depending on what it is doing.
-              </p>
-              <p>
-                This was an important part of making the system feel reactive, since it added
-                readable feedback without needing extra animations or UI elements.
-              </p>
+                The robot uses simple states to make the system feel more readable. These states affect
+                both behavior, animation and emissive feedback.
+              <ul>
+                <li><strong>Idle</strong> — Jittering animation, emissive feedback </li>
+                <li><strong>Patrol</strong> — Patrolling movement, shel tilt, wheel spinning animation, antenna bend</li>
+                <li><strong>Scan</strong> — Idle state with shell turning, emissive feedback</li>
+
+              </ul>
             </div>
 
             <div class="project-hero-media">
-              <img
-                class="project-image"
-                src="images/Robot Project/RobotPlaceholderPic.png"
-                alt="Emissive feedback breakdown"
-              />
+              <video
+                class="project-video"
+                autoplay
+                loop
+                controls
+                muted
+                playsinline
+              >
+                <source src="videos/PatrollingRobot/RobotAnimationStates.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </article>
+
+          <article class="breakdown-row full-width-stack">
+          <div class="breakdown-text">
+            <h3>Rotation subgraph</h3>
+            <p>
+              This subgraph is used as the base for several of the robot’s movements.
+              It rotates parts of the mesh directly in the shader instead of using bones or animation clips.
+            </p>
+            <p>
+              The setup uses a vertex position, a pivot point, and an axis to decide how a part of the robot should rotate.
+              This makes it possible to animate different parts of the mesh in a flexible way.
+            </p>
+            <ul>
+              <li><strong>Position</strong> — the part of the mesh that will move</li>
+              <li><strong>Pivot</strong> — the point the rotation happens around</li>
+              <li><strong>Axis</strong> — the direction of the rotation</li>
+              <li><strong>Time and speed</strong> — control how fast the motion plays</li>
+              <li><strong>Rotation amount</strong> — controls how strong the motion is</li>
+            </ul>
+            <p>
+              By changing these values, the same setup can be used for both continuous spinning motion
+              and softer back-and-forth movement. This made it possible to reuse the same subgraph for
+              multiple animated parts of the robot.
+            </p>
+          </div>
+
+          <div class="project-hero-media">
+            <img
+              class="project-image"
+              src="images/Robot Project/RotationShaderRobot.png"
+              alt="Rotation subgraph breakdown"
+            />
+          </div>
+        </article>
+
+          
+
+
+
         </div>
       </section>
 
@@ -321,19 +337,14 @@
           <ul>
             <li>
               One of the biggest challenges was getting stable wheel motion. Early versions
-              calculated too much directly in the shader, which caused flickering and snapping.
+              relied too much on shader-only rotation, which caused flickering and snapping.
             </li>
             <li>
-              Another challenge was blending turn and movement behavior in a way that felt smooth
-              and readable without making the robot feel too mechanical or too unstable.
+              Another challenge was balancing movement and turning in a way that felt readable
+              without becoming too mechanical.
             </li>
             <li>
-              It also took time to find a good balance between AI behavior and procedural animation,
-              especially for the scan state and how often it should trigger.
-            </li>
-            <li>
-              A large part of the work was making sure the same system could feel expressive while
-              still staying technically simple and controllable.
+              The scan state also took several iterations to keep simple while still feeling visually distinct.
             </li>
           </ul>
         </div>
@@ -347,18 +358,9 @@
 
         <div class="learned-panel">
           <ul>
-            <li>
-              I would like to polish the transitions between patrol, scan, and chase even more
-              so the robot feels smoother and more natural.
-            </li>
-            <li>
-              I would also like to expand the visual feedback further, for example with more
-              detailed emissive changes or additional reactive motion in the shader.
-            </li>
-            <li>
-              Another thing I would like to continue exploring is adding more procedural secondary
-              motion to strengthen the character of the robot even further.
-            </li>
+            <li>I would continue polishing the transitions between patrol, scan, and chase.</li>
+            <li>I would like to push the visual feedback further with more reactive emissive behavior.</li>
+            <li>I would also keep exploring more secondary motion to give the robot more character.</li>
           </ul>
         </div>
       </section>
