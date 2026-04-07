@@ -156,7 +156,7 @@
                 muted
                 playsinline
               >
-                <source src="videos/Merle/MerleFireball.mp4" type="video/mp4" />
+                <source src="videos/MerleP6/Fireballp6.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -196,13 +196,9 @@
             <div class="breakdown-text">
               <h3>Pickup and levitation animation</h3>
               <p>
-                I also worked on procedural vertex animation for certain objects in the game.
-                This included pickup items that gently float and rotate, as well as levitating
-                objects in the environment.
-              </p>
-              <p>
-                These animations were created to give the world more life and to make important
-                gameplay objects feel more noticeable and magical.
+                I worked on vertex animation for our helth pickup. I made a Vertex Shader using HLSL to manupulate the mesh verisies using math. 
+                To roatate the object i used a rotation matrix to rotate the object over time on the x axis using its local posison. 
+                i also added a small levitation animation translating the vertisis on the y axixs over time using a sine wave makeing the feeling of it bobbing up and down
               </p>
             </div>
 
@@ -215,7 +211,59 @@
                 muted
                 playsinline
               >
-                <source src="videos/Merle/MerlePickups.mp4" type="video/mp4" />
+                <source src="videos/MerleP6/Pickupvertex.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+                    <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Charge up icon</h3>
+              <p>
+                I made a charge up icon that consists of two particle systems with a shader. 
+                The firts particle has a shader that uses polar cords to create sort of a swirl. 
+                This is used to crate the pooldown panner so with the use of particle lifteime you can see that the UV goes from 1 to 0. 
+                This type of UV manupulation is combined with a circle texture mask to create the charge up effect as seen in the video. 
+                Right as the first particle reaches fully charged i spawn in another one that is whole and looping aslo adjusting size over 
+                time with a sine to get it o vibrate indectationg that its fully charged. This effect was cut from the final game.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                <source src="videos/MerleP6/ChargeUpUI.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+             <article class="breakdown-row">
+            <div class="breakdown-text">
+              <h3>Dust particle</h3>
+              <p>
+               Made some dust particles in world space that follow the player. It consist of a big cube spawner that spawns small particle that has a dust like texture. 
+               I use drag and curl noise to make them float around in the seen and use color over life to fade them in and out. These where meant to give the scene more depth but still be sutle to the eye.
+              </p>
+            </div>
+
+            <div class="project-hero-media">
+              <video
+                class="project-video"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                <source src="videos/MerleP6/Dustparticles.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
