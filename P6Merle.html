@@ -6,7 +6,7 @@
     <title>Scott Merseburg — Merle, The Kind Incompetent Wizard</title>
     <meta
       name="description"
-      content="A 3D platformer inspired by A Hat in Time and visually influenced by Luigi's Mansion 3, featuring tech art and visual polish work in Unity."
+      content="A 3D platformer inspired by A Hat in Time."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,7 +64,7 @@
     <main class="page project-page">
       <section class="project-hero">
         <div class="project-hero-copy">
-          <p class="project-kicker">Game Project • Tech Art • Unity</p>
+          <p class="project-kicker">Game Project</p>
           <h1 class="project-title">Merle, The Kind Incompetent Wizard</h1>
         </div>
 
@@ -76,7 +76,7 @@
             controls
             muted
             playsinline
-            poster="images/Merle/MerlePoster.png"
+            poster="images/P6Merle/MerlePoster.png"
           >
             <source src="videos/Merle/MerleMain.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -94,15 +94,9 @@
             <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                <strong>Merle, The Kind Incompetent Wizard</strong> is a 3D platformer inspired by
-                <em>A Hat in Time</em>, with visual references from <em>Luigi’s Mansion 3</em>.
-                The game takes place across three levels where the player controls a small wizard,
-                explores the world, jumps between platforms, and unlocks abilities through collectible hats.
-              </p>
-              <p>
-                One of the main gameplay abilities is a fireball spell, which becomes available after
-                collecting a specific hat. My work on the project focused on visual effects, lighting,
-                cubemaps, and procedural shader-based motion for pickups and levitating objects.
+                  Merle, The Kind Incompetent Wizard is a 3D platformer inspired by A Hat in Time and visually influenced by Luigi’s Mansion 3. 
+                  The player controls a small wizard and plays through three levels, exploring the surroundings, 
+                  moving across platforms, and unlocking abilities by finding collectible hats.
               </p>
             </div>
 
@@ -114,6 +108,7 @@
                 loop
                 muted
                 playsinline
+                poster="images/P6Merle/MerleOverview.png"
               >
                 <source src="videos/Merle/MerleOverview.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -126,9 +121,6 @@
       <section class="project-section">
         <div class="section-heading">
           <h2>My contributions</h2>
-          <p>
-            My role in the project focused mainly on tech art and visual presentation.
-          </p>
         </div>
 
         <div class="breakdown-stack">
@@ -136,15 +128,12 @@
             <div class="breakdown-text">
               <h3>Fireball VFX</h3>
               <p>
-                I created the fireball effect used by the player once the ability is unlocked.
-                This included the full effect chain from the moment the spell is prepared to the
-                final impact.
+                I created a fireball VFX for our fireball ability. It consists of three compoonents a charge up effect a fire ball throw and a impact effect. 
+                The charge up particle is a bunch of fire ball particles that are scaled up over time and then stops giving the ilussion of a build up as you can see in the video the player 
+                can hold the fireball att max charge when a player presses shift it twrows the second particle wich has the same fireball core setup as the charge up but has a fire trail with embers. 
+                and lastly the impact effect usses the same fireball flipbook it is a sphere spawner trying to replictate a smallexplotion with fire shooting out and some smoke effects 
               </p>
-              <ul>
-                <li><strong>Charge-up effect</strong> — built to make the spell feel readable and satisfying before release</li>
-                <li><strong>Throw effect</strong> — the fireball projectile itself and the visual energy around it</li>
-                <li><strong>Impact effect</strong> — the hit effect when the fireball collides with the environment or a target</li>
-              </ul>
+
             </div>
 
             <div class="project-hero-media">
@@ -167,13 +156,13 @@
               <h3>Lighting and cubemaps</h3>
               <p>
                 I worked on the lighting for all three levels and also created cubemaps for them.
-                A large part of this work was about supporting the mood of each level and making the
-                environments feel more polished and atmospheric.
+                Level 1 & 2 where indoor enviroments and where limited to only using spotlights and pointlights. Level 3 uses directional light.
               </p>
+
               <p>
-                Because the game takes visual inspiration from <em>Luigi’s Mansion 3</em>, the lighting
-                was important for giving the world a more stylized and playful feel while still keeping
-                it readable for gameplay.
+                The Cubemaps where created in Unreal Engine using unreals scene capture cube wich captures a panorama hdr texture off the whole scene. 
+                I bulit small test scenes of each level using our games assets and to create a enviroment that reflected the whole level using all unreals light feautureas. 
+                After that the HDR texture was exported and imported into LYS where it could be converted into a CubeMap texture that our engine could read.
               </p>
             </div>
 
@@ -186,7 +175,7 @@
                 muted
                 playsinline
               >
-                <source src="videos/Merle/MerleLighting.mp4" type="video/mp4" />
+                <source src="videos/MerleP6/P6lighting.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -271,67 +260,6 @@
         </div>
       </section>
 
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Game direction</h2>
-        </div>
-
-        <div class="learned-panel">
-          <p>
-            The game was designed as a charming and playful 3D platformer, drawing inspiration
-            from <em>A Hat in Time</em> in its movement, tone, and collectible-driven progression,
-            while using <em>Luigi’s Mansion 3</em> as a visual reference for atmosphere and presentation.
-          </p>
-          <p>
-            This combination shaped both the gameplay and the visual work. The effects, lighting,
-            and floating object animations were all created to support a world that feels whimsical,
-            readable, and full of personality.
-          </p>
-        </div>
-      </section>
-
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Challenges</h2>
-        </div>
-
-        <div class="learned-panel">
-          <ul>
-            <li>
-              One challenge was making the fireball effects feel powerful and readable while still fitting
-              the stylized tone of the game.
-            </li>
-            <li>
-              Another challenge was finding lighting setups that worked across three different levels while
-              still giving each level its own mood and identity.
-            </li>
-            <li>
-              For the floating pickups and levitating objects, it was important to create motion that felt
-              magical and alive without becoming too distracting.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>If I had more time</h2>
-        </div>
-
-        <div class="learned-panel">
-          <ul>
-            <li>
-              I would continue polishing the fireball effects to push the charge-up, throw, and impact stages even further.
-            </li>
-            <li>
-              I would like to refine the lighting more across all three levels to strengthen the mood and visual identity of each area.
-            </li>
-            <li>
-              I would also expand the procedural object animations with more variation and secondary motion.
-            </li>
-          </ul>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">

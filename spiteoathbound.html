@@ -65,20 +65,23 @@
       <!-- Hero -->
       <section class="project-hero">
         <div class="project-hero-copy">
-          <p class="project-kicker">Game Project • Tech Art • Unity</p>
+          <p class="project-kicker">Game Project</p>
           <h1 class="project-title">Spite Oathbound</h1>
         </div>
 
     <div class="project-hero-media">
-      <iframe
-        class="project-video"
-        src="https://youtu.be/6T9ucwCqhoA?si=dqRu7bOral659lcn"
-        title="Spite Oathbound gameplay"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
-    </div>
+              <video
+                class="project-video"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+              >
+                <source src="videos/Oathbound/SpiteOathboundTrailer.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
       </section>
 
       <!-- Overview -->
@@ -88,62 +91,44 @@
         </div>
 
         <div class="breakdown-stack">
-          <article class="breakdown-row">
-            <div class="breakdown-text">
+          <article class="breakdown-row full-width-stack">
+          <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                <strong>Spite Oathbound</strong> is a top-down action game inspired by
-                <em>Diablo 3</em>, but with a Viking-themed visual direction. The player takes
-                control of a shield maiden and fights through different levels filled with enemies
-                and larger boss encounters.
+                Spite Oathbound was the first project i took part in during my Tech Art education at The Game Assembly. 
+                It is a topdown action game inspired by Diablo 3 with viking inspired visuals. 
+                The player controls a shield maiden and fights through multiple levels filled with enemies and larger bosses.
               </p>
               <p>
-                My work on the project focused on technical art and gameplay-related visual effects.
-                I created a shader-based highlight effect for enemies, a scrolling projectile trail mesh,
-                and boss-related mesh and particle effects.
+                My main focus in the project was technical art and VFX writing shadres in HLSL. 
+                I worked on several features including a shader for highlighting enemies, 
+                a scrolling projectile trail mesh, and mesh and particle effects for the end boss.
               </p>
-            </div>
-
-            <div class="project-hero-media">
-              <video
-                class="project-video"
-                controls
-                autoplay
-                loop
-                muted
-                playsinline
-              >
-                <source src="videos/SpiteOathbound/SpiteOverview.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
             </div>
           </article>
         </div>
       </section>
 
-      <!-- Contributions -->
       <section class="project-section">
         <div class="section-heading">
           <h2>My contributions</h2>
-          <p>
-            My role in the project focused on shaders and combat-related visual effects.
-          </p>
         </div>
 
         <div class="breakdown-stack">
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Enemy hover and special enemy shader</h3>
+              <h3>Enemy highlight shader</h3>
               <p>
-                I created a shader effect for enemies that reacts when the player hovers over them
-                with the mouse. This made enemies more readable and helped give clearer visual feedback
-                during gameplay.
+               I created an HLSL shader that highlights enemies when the player hovers the mouse over them. 
+               This effect is based on the Fresnel effect, which uses the direction of the camera and the surface normals 
+               to create a glowing outline around the enemy.
+                The effect is activated when the mouse is positioned over an enemy, setting the isHovering variable to true. 
+                The same shader is also used for special enemies, which have a constant glow by default. For these enemies, 
+                hovering blends the highlight colour with the original glow colour. For example, a special enemy may glow purple by default and, when hovered over, 
+                the colour shifts towards red to create a pinkish result.
+                Special enemies use a separate boolean called isSpecial, which must be set to true for the constant glow effect to be active.
               </p>
-              <p>
-                In the same shader, I also handled special enemies. These enemies were always glowing,
-                and when hovered they reacted with a different color than normal enemies. This helped
-                separate them visually and communicate that they were more important or dangerous.
-              </p>
+
             </div>
 
             <div class="project-hero-media">
@@ -155,7 +140,7 @@
                 muted
                 playsinline
               >
-                <source src="videos/SpiteOathbound/SpiteEnemyShader.mp4" type="video/mp4" />
+                <source src="videos/Oathbound/Highlightshader.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -163,15 +148,14 @@
 
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Projectile trail mesh</h3>
+              <h3>Boss VFX</h3>
               <p>
-                I created a projectile trail mesh that used a scrolling texture to give projectiles
-                a stronger sense of movement and direction. The goal was to make attacks feel more dynamic
-                and readable from the top-down camera view.
+                I created VFX for the boss battle, including a large mesh beam with a panning texture that shoots out from the boss mouth as one of its attacks. To support the effect, 
+                I also made a particle effect with two bursts of green particles on each side of the boss mouth.
+                
               </p>
-              <p>
-                Since the game is inspired by action RPGs like <em>Diablo 3</em>, readable combat effects
-                were important for making abilities feel responsive and satisfying.
+                I also created a poison projectile using a vertex shader applied to a sphere mesh. By sampling simple noise 
+                i deformed the spheres vertices to give it a more organic goo like appearance. This effect was used for one of the boss projectile attacks.   
               </p>
             </div>
 
@@ -184,25 +168,24 @@
                 muted
                 playsinline
               >
-                <source src="videos/SpiteOathbound/SpiteProjectileTrail.mp4" type="video/mp4" />
+                <source src="videos/Oathbound/Bossvfx.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </article>
 
+                  <div class="breakdown-stack">
           <article class="breakdown-row">
-            <div class="breakdown-text">
-              <h3>Boss beam and mouth VFX</h3>
-              <p>
-                For the large giant boss, I created a beam mesh effect as well as a smaller particle
-                effect at the mouth. These effects were made to support the boss attack visually and
-                make the ability feel more threatening.
-              </p>
-              <p>
-                The beam mesh gave the boss attack a stronger shape and direction, while the particle
-                effect at the mouth added a buildup point and helped connect the attack to the character.
-              </p>
-            </div>
+          <div class="breakdown-text">
+            <h3>Death Puff and Projectile Trail</h3>
+            <p>
+              I created a death puff particle VFX for the small ghost enemies. It was made using our custom particle system and uses a green smoke texture that appears as a smoke puff when the enemy dies.
+            </p>
+
+            <p>
+              I also made a mesh trail for the ranged enemies projectiles. It spawns a mesh with a trail texture which pans across the UVs using a shader.
+            </p>
+          </div>
 
             <div class="project-hero-media">
               <video
@@ -213,76 +196,12 @@
                 muted
                 playsinline
               >
-                <source src="videos/SpiteOathbound/SpiteBossBeam.mp4" type="video/mp4" />
+                <source src="videos/Oathbound/Deathpuffenemytrail.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </article>
-        </div>
-      </section>
 
-      <!-- Visual direction -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Visual direction</h2>
-        </div>
-
-        <div class="learned-panel">
-          <p>
-            The project takes inspiration from the structure and feel of <em>Diablo 3</em>,
-            but shifts the presentation into a Viking-themed setting. Because of that, the effects
-            needed to feel readable and powerful from a top-down view while still fitting the darker
-            fantasy tone of the world.
-          </p>
-          <p>
-            My work was mainly about supporting combat readability and enemy clarity. The hover shader,
-            projectile trail, and boss effects were all created to help the player read threats and
-            interactions more clearly during gameplay.
-          </p>
-        </div>
-      </section>
-
-      <!-- Challenges -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>Challenges</h2>
-        </div>
-
-        <div class="learned-panel">
-          <ul>
-            <li>
-              One challenge was making the enemy hover effect feel clear without becoming too strong or distracting.
-            </li>
-            <li>
-              Another challenge was making special enemies feel visually distinct while still keeping them consistent with the rest of the game.
-            </li>
-            <li>
-              For the projectile trail and boss beam, it was important to make the direction of the effects readable from the top-down camera angle.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- If I had more time -->
-      <section class="project-section">
-        <div class="section-heading">
-          <h2>If I had more time</h2>
-        </div>
-
-        <div class="learned-panel">
-          <ul>
-            <li>
-              I would like to continue polishing the enemy shader with even more variation between normal and special enemies.
-            </li>
-            <li>
-              I would refine the projectile trail further to give it more depth and stronger motion.
-            </li>
-            <li>
-              I would also expand the boss effects with more buildup, impact, and secondary VFX to make the encounter feel even stronger.
-            </li>
-          </ul>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
