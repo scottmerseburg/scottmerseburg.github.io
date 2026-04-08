@@ -97,9 +97,9 @@
             <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                  This project is a smaller side project where I created an explosion effect
+                  This project is a project where i created an explosion effect
                   for a small rolling robot that is part of another portfolio piece.
-                  The effect was built in Unity using the Particle System, with flipbooks created
+                  The effect was built in Unity using the Particle System with flipbooks created
                   in EmberGen for the explosion and smoke. The goal was to make a explotion for my robot that feels satisfying to watch and reflect a exploding robot as good as possible.
               </p>
             </div>
@@ -126,16 +126,16 @@
                 The final effect is built from several layered particle elements working together.
               </p>
               <ul>
-                <li><strong>Main Explosion</strong> — Flipbook created in EmberGen.</li>
-                <li><strong>Smoke</strong> — Smoke flipbook also created in EmberGen.</li>
-                <li><strong>Sparks / Embers</strong> — Small glowing particles using Unity’s default particle system.</li>
-                <li><strong>Big Sparks</strong> — Larger spark particles to add impact and variation.</li>
-                <li><strong>Ground Glow</strong> — A glow effect placed on the ground to enhance the blast.</li>
-                <li><strong>Background Glow</strong> — Extra light bloom behind the explosion to push the intensity.</li>
-                <li><strong>Explosion Decal</strong> — A decal made in Photoshop.</li>
-                <li><strong>Pebbles / Debris</strong> — Small debris pieces thrown outward from the explosion.</li>
-                <li><strong>Shockwave</strong> — A shockwave texture created in Photoshop.</li>
-                <li><strong>Scrap with Smoke Trail</strong> — Broken robot parts flying out with smoke trails attached.</li>
+                <li><strong>Main Explosion:</strong>  Flipbook created in EmberGen.</li>
+                <li><strong>Smoke:</strong>  Smoke flipbook also created in EmberGen.</li>
+                <li><strong>Sparks / Embers:</strong>  Small glowing particles using Unitys default particle system.</li>
+                <li><strong>Big Sparks:</strong>  Larger spark particles to add impact and variation.</li>
+                <li><strong>Ground Glow:</strong>  A glow effect placed on the ground to enhance the blast.</li>
+                <li><strong>Background Glow:</strong>  Extra light bloom behind the explosion to push the intensity.</li>
+                <li><strong>Explosion Decal:</strong>  A decal made in Photoshop.</li>
+                <li><strong>Pebbles / Debris:</strong>  Small debris pieces thrown outward from the explosion.</li>
+                <li><strong>Shockwave:</strong>  A shockwave texture created in Photoshop.</li>
+                <li><strong>Scrap with Smoke Trail:</strong>  Broken robot parts flying out with smoke trails attached.</li>
               </ul>
             </div>
 
@@ -158,20 +158,20 @@
             <div class="breakdown-text">
               <h3>Destruction setup</h3>
               <p>
-                The explosion is not only a particle effect — it also changes the robot model itself.
+                The explosion is not only a particle effect it also changes the robot model itself.
               </p>
               <ul>
                 <li>
-                  <strong>Mesh Swap</strong> — When the explosion happens, the original robot mesh is disabled.
+                  <strong>Mesh Swap:</strong>  When the explosion happens, the original robot mesh is disabled.
                 </li>
                 <li>
-                  <strong>Destroyed Version</strong> — A damaged version of the robot is spawned in its place.
+                  <strong>Destroyed Version:</strong>  A damaged version of the robot is spawned in its place.
                 </li>
                 <li>
-                  <strong>Dissolve Shader</strong> — The destroyed mesh uses a dissolve shader to make it feel burnt and broken apart.
+                  <strong>Dissolve Shader:</strong>  The destroyed mesh uses a dissolve shader to make it feel burnt and broken apart.
                 </li>
                 <li>
-                  <strong>Smoke Trail</strong> — The destroyed robot keeps emitting smoke to show that it is still damaged after the blast.
+                  <strong>Smoke Trail:</strong>  The destroyed robot keeps emitting smoke to show that it is still damaged after the blast.
                 </li>
               </ul>
             </div>
@@ -207,9 +207,9 @@
               <h3>Main Explotion</h3>
               <p>
                   I created a flipbook texture sheet in EmberGen and exported it into Unity. 
-                  The texture sheet is 10x10 and is applied to a Unity particle material, 
+                  The texture sheet is 10x10 and is applied to a Unity particle material 
                   which is then used in a particle system. The particles are spawned in a 
-                  sphere, with a short lifetime and color fading over lifetime. The particles 
+                  sphere with a short lifetime and color fading over lifetime. The particles 
                   also use billboarded sprites to always face the camera.              
               </p>
 
@@ -235,8 +235,8 @@
             <div class="breakdown-text">
               <h3>Main Smoke</h3>
               <p>
-                I use the same texture sheet as the main explosion, but only the top half where the smoke 
-                exists. This is also spawned from a sphere, but with a slightly longer lifetime. 
+                I use the same texture sheet as the main explosion but only the top half where the smoke 
+                exists. This is also spawned from a spher, but with a slightly longer lifetime. 
                 I added upward velocity and some drag to make the movement feel more like smoke.
               </p>
 
@@ -262,8 +262,8 @@
           <div class="breakdown-text">
             <h3>Explotion and smoke flipbook</h3>
             <p>
-              Here is a picture of the flipbook that i use for the explotion and smoke. It is made with EmberGen using the default explotion preset, 
-              adjusting values like color, fuel intenisty, votex size velocty wind direction to get the desired look i wanted.
+              Here is a picture of the flipbook that i use for the explotion and smoke. It is made with EmberGen using the default explotion preset but
+              adjusting values like color, fuel intenisty, voxel size to get the desired look i wanted.
             </p>
           </div>
 
@@ -281,7 +281,7 @@
             <div class="breakdown-text">
               <h3>Sparks and Embers</h3>
               <p>
-                I use two different types of sparks: one larger and faster type, and one smaller and slower type that slows down over time and becomes falling embers. These particles use Unity’s default particle system, 
+                I use two different types of sparks one larger and faster type and one smaller and slower type that slows down over time and becomes falling embers. These particles use Unitys default particle system
                 and I stretched them based on velocity to give them a more dynamic look.
               </p>
 
@@ -307,8 +307,8 @@
             <div class="breakdown-text">
               <h3>Ground and background glow</h3>
               <p>
-                I created two types of glows to enhance the brightness and intensity of the explosion. One is horizontally billboarded, 
-                and the other uses normal billboarding. Together, they create both a ground glow and a background glow behind the explosion.
+                I created two types of glows to enhance the brightness and intensity of the explosion. One is horizontally billboarded 
+                and the other uses normal billboarding. Together they create both a ground glow and a background glow behind the explosion.
               </p>
             </div>
 
@@ -335,7 +335,7 @@
               <h3>Explotion decal</h3>
               <p>
                 I created an impact decal in Photoshop to leave a permanent mark after the explosion. 
-                The decal is used as a particle with horizontal billboarding so it stays flat on the ground, giving the illusion of a hole or impact mark on the surface.
+                The decal is used as a particle with horizontal billboarding so it stays flat on the ground giving the illusion of a hole or impact mark on the surface.
               </p>
             </div>
 
@@ -353,8 +353,8 @@
             <div class="breakdown-text">
               <h3>Debris and pebbles</h3>
               <p>
-                To add some environmental destruction, I added small debris particles to give the illusion of pieces flying out from the floor during the explosion. 
-                These use mesh particles, and unfortunately I did not have time to create my own mesh, so I used a default cube.
+                To add some environmental destruction i added small debris particles to give the illusion of pieces flying out from the floor during the explosion. 
+                These use mesh particles,and unfortunately I did not have time to create my own mesh so i used a default cube.
               </p>
             </div>
 
@@ -411,7 +411,7 @@
             <div class="breakdown-text">
               <h3>Scrap with smoke trail</h3>
               <p>
-                I added scrap, or destroyed robot parts, flying out from the robot when it explodes. This is done using mesh particles. I attached a smoke trail to each particle using a smoke material and texture. 
+                I added scrap or destroyed robot parts flying out from the robot when it explodes. This is done using mesh particles. I attached a smoke trail to each particle using a smoke material and texture. 
                 I also added a dissolve material to the mesh with an orange glowing edge to give it more of an exploded feel.
               </p>
             </div>
@@ -438,9 +438,9 @@
               <p>
                 The destroyed robot is a prefab that spawns in with a directional force when the explotion happens replacing the current mesh. 
                 This is done in a C# script. The robot has a custom desolve shader to create the feeling of it being destroyed it also has the original textures 
-                bur tinted gray and also has a simple noise texture in a darker gray to create a dirt effect.  The dissolve effect works by sampling a noise on the 
-                alpha and with tha alpha theshlod controlling what pixels should be rendered based on the npoise i use the same nose with a small offest to create a 
-                glowing edge in the edge of where the dissolve affects. in the video this is displade by a sine over time to easier visulaize the effect but on defaulkt 
+                 tinted gray and also has a simple noise texture in a darker gray to create a dirt effect.  The dissolve effect works by sampling a noise on the 
+                alpha and with tha alpha theshlod controlling what pixels should be rendered based on the noise i use the same noise with a small offest to create a 
+                glowing edge in the edge of where the dissolve affects. In the video this is displade by a sine over time to easier visulaize the effect but on defaulkt 
                 it is set to a default value. It also has a particle system with a slow smoke rising effect.
 
               </p>
@@ -483,13 +483,6 @@
               One challenge was timing. A large part of making the effect feel convincing
               was getting the different particle elements to appear at the right moment so the explosion felt powerful and believable.
             </li>
-            <li>
-              I also had, and still have some issues with layering and rendering between particles. So would like to have had more time on polishing that
-            </li>
-            <li>
-              I experimented with six-point lighting for the explosion, but I did not have enough time
-              to make it work as well as I wanted.
-            </li>
           </ul>
         </div>
       </section>
@@ -503,7 +496,7 @@
         <div class="learned-panel">
           <ul>
             <li>
-              I would have liked to spend more time exploring six-point lighting. I started testing it out but the time ran out
+              I would have liked to spend more time exploring six-point lighting. To make the smoke and explotion feel more volumetric .
             </li>
             <li>
               I would also have wanted to continue refining the timing of the effect

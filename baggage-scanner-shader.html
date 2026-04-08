@@ -100,9 +100,10 @@
             <div class="breakdown-text">
               <h3>Introduction</h3>
               <p>
-                This project explores how to recreate the look of an airport baggage scanner in Unity using Shader Graph. 
-                The goal was to visualize the contents inside luggage by showing internal objects, material types, and thickness. 
-                To achieve this, I combined transparency, fresnel effects, thickness maps, and material ID textures.
+                This project started from the idea of a game where the player takes on the role of a TSA agent inspecting luggage. 
+                With that in mind my goal was to recreate the visual look of an airport baggage scanner in Unity using Shader Graph. 
+                The shader was designed to mimic the scanning process by revealing the contents inside a luggage, including internal objects, 
+                different material types, and thickness. To achieve this i combined transparency, fresnel effects, thickness maps and material ID textures.
               </p>
             </div>
 
@@ -125,13 +126,13 @@
             <div class="breakdown-text">
               <h3>Textures and effects used</h3>
               <p>
-                Here is a breakdown of how each indivudual object works.
+                Here is a breakdown of the material on each object.
               </p>
               <ul>
-                <li><strong>Thickness Map</strong> — Texture to illustrate the objects thickness</li>
-                <li><strong>Material Map</strong> — Material Map to map a color to each part of the object</li>
-                <li><strong>Fresnel Effect</strong> — Fresnel effect to get the seethrough scanned look</li>
-                <li><strong>Final Shader</strong> — Conbinding all of the above to get the Baggage scan effect</li>
+                <li><strong>Thickness Map:</strong> Texture to illustrate the objects thickness</li>
+                <li><strong>Material Map:</strong> Material Map to map a color to each part of the object</li>
+                <li><strong>Fresnel Effect:</strong> Fresnel effect to get a glowing edge around the object</li>
+                <li><strong>Final Shader:</strong> Combinding all of the above to get the Baggage scan effect</li>
               </ul>
             </div>
 
@@ -154,9 +155,9 @@
         <div class="breakdown-text"> 
           <h3>Stencil and depth buffers</h3> 
           <p> Breakdown of how the scanning effect works. </p> 
-          <ul> <li><strong>Occlusion Box</strong> — I use a simple invisible box to detect when the bag is hidden behind other geometry. This determines when the scan should activate. and shader material will bw applied. 
-          </li> <li><strong>Stencil Mask</strong> — When the bag is occluded, I write to the stencil buffer to mark exactly where the effect is allowed to appear.
-          </li> <li><strong>Content inside</strong> — Finally, I render the contents of the bag, but only inside the stencil mask, making them visible only when the scan is active.
+          <ul> <li><strong>Occlusion Box:</strong> I use an invisible box to check when the bag is hidden behind other objects. When that happens, the scan effect turns on and the scan material is applied.
+          </li> <li><strong>Stencil Mask:</strong> Once the bag is hidden. I use the stencil buffer to mark the area where the scan effect should be visible.
+          </li> <li><strong>Content inside:</strong> The objects inside the bag are then rendered only within that marked area so they appear visible only while the scan is active.
           </li> </ul> 
         </div> 
           
@@ -192,8 +193,9 @@
             <div class="breakdown-text">
               <h3>Thickness Texture</h3>
               <p>
-                Created in Substance Painter, this texture represents the thickness of the object using grayscale values based on ray-cast depth. 
-                Darker areas indicate thicker parts of the mesh, while lighter areas represent thinner sections.
+                This texture was baked in Substance Painter as a thickness map. 
+                It generates grayscale values based on the depth of the mesh 
+                showing how thick different parts of the object are. Brighter values represent thinner areas while darker values represent thicker ones.
               </p>
             </div>
 
@@ -216,9 +218,9 @@
         <div class="breakdown-text"> 
           <h3>Material Texture</h3> 
           <p> 
-            This texture was created to define different material types across the object. Using grayscale values, different areas are assigned material categories such as Organic, 
-            Non-Organic, Metals, and Heavy Metals. 
-            In the shader, these values are masked and remapped to the correct material colors, which are controlled through global parameters.
+            This texture was created to define different material types across the object. Using grayscale values different areas are assigned material categories and colors such as Organic (Orange), 
+            Non-Organic (Green), Metals (Blue), and Heavy Metals (Purple). 
+            In the shader these values are masked and remapped to the correct material colors.
           </p> 
         </div> 
           
@@ -239,9 +241,8 @@
         <div class="breakdown-text"> 
           <h3>Fresnel Effect</h3> 
           <p> 
-            Fresnel is a effect that takes camera position to account and not draws pixles that have the normals to the camera. 
-            This is used in the shader to create glowing edges on the objects. The frensel effect is added with the material color and put into the 
-            emmissive input in the master stack reslulting in a glowing edge around the objects
+            Fresnel is an effect that takes the camera view angle into account and becomes more visible along the edges of an object. In this shader i used it to create a glowing outline around the objects. 
+            The fresnel effect is combined with the material color and connected to the emissive input in the master stack which results in glowing edges.
           </p> 
         </div> 
           
@@ -260,8 +261,8 @@
         <div class="breakdown-text"> 
           <h3>Final Shader</h3> 
           <p> 
-            So the final shader is a combination of all these effects the thickness texture is combined with the material texture to create a 
-            albedo map that is connected to the base map in the main shader input. The Fresnel and material cobination is added to the emmisive 
+            So the final shader is a combination of all these effects and textures. The thickness texture is combined with the material texture to create a 
+            albedo map that is connected to the base map in the main shader stack. The Fresnel and material combination is added to the emissive output
             to create a glowing edge.
 
           </p> 
@@ -281,14 +282,13 @@
           
         <article class="breakdown-row">
         <div class="breakdown-text"> 
-          <h3>Occlution and stencil buffer</h3> 
+          <h3>Occlusion and stencil buffer</h3> 
           <p> 
-            The red box represents the occluder a simple invisible proxy used to detect when the bag is behind other geometry. When this happens, 
-            I write a value to the stencil buffer to mark the active scan area.
-            The white material is a debug visualization of the stencil mask. It shows exactly where rendering is allowed. In the final version, this area is instead filled 
-            with the transparent X-ray material.
-            Finally, both the bag and its contents are rendered only inside this masked region, making them visible only when the scan is active.
+            The red box is the occluder an invisible helper object that checks when the bag is behind other geometry. When that happens i use the stencil buffer to mark the area where the scan effect should appear (White box).
 
+            The white material is only there as a debug view. It shows the exact area where rendering is allowed. In the final version this area is replaced with the transparent X-ray material instead.
+
+            Once the scan is active the shader material is applied to the bag and both the bag and the objects inside it are only rendered within the marked area. This helps create the illusion that the bag is being scanned.
           </p> 
         </div> 
           
@@ -313,19 +313,22 @@
       <!-- Challenges -->
        <section class="project-section">
         <div class="section-heading">
-          <h2>Challanges</h2>
+          <h2>Challenges</h2>
         </div>
 
         <div class="learned-panel">
 
-          <ul> <li>A large part of the work happened outside of Unity. 
-            There was a lot of preparation involved, including fixing UV maps for the objects, 
-            baking thickness maps for each asset, and creating material textures for every object. 
-          </li> <li>Another challenge was achieving the right transparent look. Visually, 
-            the thickness information baked in Substance Painter did not always reflect the actual thickness in a believable way, 
-            so it required a bit of testing and adjustment.
-          </li> <li>Since i havent worked alot with render passes, buffers or stencils Understanding and 
-            getting the shader to render when it was suppose too took abit of reaserch and testing.
+          <ul> <li>
+            A large part of the work took place outside of Unity. There was a lot of preparation for each object. 
+            Fixing UV maps, baking thickness maps and creating material textures for every object. To make the pipeline smoother 
+            I created export presets for the thickness maps. For the material ID textures i made a grayscale color palette which made it easier to keep track of which color 
+            represented which material when working in Photoshop.
+
+          </li> <li>
+            Another challenge was finding the right transparent look. The thickness information baked in Substance Painter did not always translate the same for each object
+            so it took some testing and tweaking to get it to look good. I also tried a few different shader setups along the way such as comparing lit and unlit versions
+            and testing the effect with and without the Fresnel. This helped me explore what worked best visually for the scan effect.
+
           </li> </ul> 
 
   
@@ -342,15 +345,15 @@
         <div class="learned-panel">
           <ul>
             <li>
-              If I had more time, I would have liked to explore further automation to reduce the amount of preparation work. For example, 
-              I would have wanted to develop a tool inside the engine that could automatically calculate the thickness of the entire baggage. 
-              I also would have liked to make the shader setup more automatic, so that the whole bag could use a single material instead of requiring one material per object.
+             If I had more time i would have liked to explore the different baking settings in Substance Painter more. 
+             I knew there were several options to experiment with but i did not have enough time to test them properly.
             </li>
             <li>
-              It would also have been nice to spend more time polishing the visual look. I think there is potential for more interesting results by basing 
-              color values on the density of each object, making them appear darker or lighter depending on the data. I also would have liked to experiment with post-processing 
-              effects to create more of a scanner-like feel.
+              It would also have been nice to spend more time polishing the visual look of the effect. I think there is potential for more interesting results by working further with how density values are translated into color. 
+              Which could help separate different organic materials more clearly from eachother. 
+              For example materials such as fruit, wood, or other dense objects could be given more distinct color differences. 
             </li>
+
           </ul>
         </div>
       </section>

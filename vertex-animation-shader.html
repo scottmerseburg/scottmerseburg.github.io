@@ -95,10 +95,8 @@
             <div class="breakdown-text">
               <h3>Overview</h3>
               <p>
-                This project focuses on building a small robot driven by procedural animation
-                instead of traditional skeletal animation. Different parts of the robot are controlled
-                through vertex color masks, while C# sends runtime values into Shader Graph to drive
-                movement, turning, state changes, and visual feedback.
+                This project is about a small robot animated through a shader and driven by signals from C#. Vertex colors are used to separate the different parts of the mesh 
+                which makes it possible to control and animate them individually. This allows different parts of the robot to move on their own without relying on traditional skeletal animation.
               </p>
             </div>
 
@@ -124,27 +122,32 @@
                 The final setup is built around a few key systems working together.
               </p>
               <ul>
-                <li><strong>Vertex Color Masks</strong> — Divide the mesh into separate animation areas</li>
-                <li><strong>Shader Graph Animation</strong> — Drives shell, wheels, core, and antenna motion</li>
-                <li><strong>C# Control Signals</strong> — Handles movement, turning, states, and wheel phase</li>
-                <li><strong>Material Property Blocks</strong> — Send dynamic runtime values into the shader</li>
-                <li><strong>State-Based Feedback</strong> — Idle, Patrol, and scan affect both motion and emissive response</li>
+                <li><strong>Vertex Color Masks:</strong>  Separate the mesh into different areas that can be animated individually.</li>
+                <li><strong>Shader Animation:</strong>  Drives the animation movement of the shell, wheels, core and antenna.</li>
+                <li><strong>C# Control Signals:</strong>  Controls how the robot moves, turns, changes between states.</li>
+                <li><strong>Material Property Blocks:</strong>  Pass C# values into the shader.</li>
               </ul>
             </div>
 
             <div class="project-hero-media">
-              <video
-                class="project-video"
-                controls
-                autoplay
-                loop
-                muted
-                playsinline
-              >
-                <source src="videos/PatrollingRobot/VertexRobotOverview.mov" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          <video
+            id="vertex-robot-overview"
+            class="project-video"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="videos/PatrollingRobot/VertexRobotOverview.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <script>
+          const vertexRobotOverview = document.getElementById("vertex-robot-overview");
+          vertexRobotOverview.playbackRate = 1.5;
+        </script>
           </article>
 
         </div>
@@ -163,17 +166,19 @@
           <!-- Mesh Masks -->
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Mesh masks</h3>
+              <h3>Vertex Color Masks</h3>
               <p>
-                Vertex color channels were used to split the robot mesh into different motion zones.
-                This made it possible to control several parts of the same mesh independently inside
-                Shader Graph without using bones.
+                Vertex color channels were used to separate the robot mesh into different moving parts.
+                I painted these vertex colors in Maya to define which parts of the mesh should move in different ways.
+                This made it possible to control and animate different areas of the same mesh individually in the shader.
               </p>
               <ul>
-                <li><strong>R</strong> — Outer shell / eye housing</li>
-                <li><strong>G</strong> — One inner wheel</li>
-                <li><strong>B</strong> — The other inner wheel</li>
-                <li><strong>Combined channels</strong> — Used for inner core and extra motion logic</li>
+                <li><strong>Red mask:</strong>  Outer shell.</li>
+                <li><strong>Green mask:</strong>  Right inner wheel.</li>
+                <li><strong>Blue mask:</strong>  Left inner wheel.</li>
+                <li><strong>Yellow mask:</strong>  Used for the inner core.</li>
+                <li><strong>Alpha mask:</strong>  A painted gradient on the antenna used to make it bend.</li>
+                
               </ul>
             </div>
 
@@ -195,17 +200,15 @@
           <!-- Shader Motion -->
           <article class="breakdown-row">
             <div class="breakdown-text">
-              <h3>Shader-driven motion</h3>
+              <h3>Shader driven motion</h3>
               <p>
-                Most of the robot animation is created directly in Shader Graph. Different mesh parts
-                are rotated around custom pivots, allowing the robot to react dynamically to movement
-                and state values at runtime.
+                Most of the robots animation is handled directly in the shader with different parts of the mesh rotating around their own pivot points.
               </p>
               <ul>
-                <li><strong>Shell motion</strong> — Turning, tilt, and directional feedback</li>
-                <li><strong>Wheel motion</strong> — Procedural forward and turning behavior</li>
-                <li><strong>Inner core</strong> — Secondary rotation for added motion detail</li>
-                <li><strong>Antenna</strong> — Bend and spring-based secondary motion</li>
+                <li><strong>Shell motion:</strong>  Turning, tilt, and directional motion.</li>
+                <li><strong>Wheel motion:</strong>  Procedural forward and turning motion.</li>
+                <li><strong>Inner core:</strong>  Slower forward rotation.</li>
+                <li><strong>Antenna:</strong>  Bend and spring motion.</li>
               </ul>
             </div>
 
@@ -229,14 +232,14 @@
             <div class="breakdown-text">
               <h3>Behavior signals from C#</h3>
               <p>
-                C# handles the robot’s behavior logic and sends a small set of control values into the shader.
-                These values drive the procedural animation and make it easier to keep the visual motion stable and readable.
+                C# handles the robots behavior logic and sends a small set of control values into the shader.
+                These values drive the procedural animation.
               </p>
               <ul>
-                <li><strong>MoveAmount</strong> — how much the robot is moving</li>
-                <li><strong>TurnAmount</strong> — how much the robot is turning</li>
-                <li><strong>Antenna Bend</strong> — controls the antenna motion and adds secondary movement</li>
-                <li><strong>Wheel Angle</strong> — a stable wheel rotation value calculated in code</li>
+                <li><strong>MoveAmount:</strong>  How much the robot is moving value 0 to 1.</li>
+                <li><strong>TurnAmount:</strong>  How much the robot is turning based on -1 to 1 (left and right).</li>
+                <li><strong>Antenna Bend:</strong>  Controls the antenna motion based on a value 0 to 1.</li>
+                <li><strong>Wheel Angle:</strong>  Wheel angle calculated in code.</li>
               </ul>
             </div>
 
@@ -260,12 +263,11 @@
             <div class="breakdown-text">
               <h3>States and visual feedback</h3>
               <p>
-                The robot uses simple states to make the system feel more readable. These states affect
-                both behavior, animation and emissive feedback.
+                The robot uses a few simple states to make its behavior easier to read. These states affect its movement, animation and emissive feedback.
               <ul>
-                <li><strong>Idle</strong> — Jittering animation, emissive feedback </li>
-                <li><strong>Patrol</strong> — Patrolling movement, shel tilt, wheel spinning animation, antenna bend</li>
-                <li><strong>Scan</strong> — Idle state with shell turning, emissive feedback</li>
+                <li><strong>Idle state:</strong>  Jittering animation over time using two sine waves + blue emissive feedback</li>
+                <li><strong>Patroling state</strong>  Patrolling movement, shel tilt, wheel spinning animation and antenna bend</li>
+                <li><strong>Scaning state:</strong>  Idle state with shell turning + yellow emissive feedback</li>
 
               </ul>
             </div>
@@ -289,25 +291,33 @@
           <div class="breakdown-text">
             <h3>Rotation subgraph</h3>
             <p>
-              This subgraph is used as the base for several of the robot’s movements.
-              It rotates parts of the mesh directly in the shader instead of using bones or animation clips.
+              This subgraph is used as the base for several of the robots movements. Instead of using bones or animation clips it rotates parts of the mesh directly in the shader.
             </p>
             <p>
-              The setup uses a vertex position, a pivot point, and an axis to decide how a part of the robot should rotate.
-              This makes it possible to animate different parts of the mesh in a flexible way.
+              In my setup the position input is driven by a vertex color mask. This means that the subgraph does not affect the whole mesh at once but only the specific part selected by that mask. 
+              This made it possible to animate different parts of the robot separately.
             </p>
-            <ul>
-              <li><strong>Position</strong> — the part of the mesh that will move</li>
-              <li><strong>Pivot</strong> — the point the rotation happens around</li>
-              <li><strong>Axis</strong> — the direction of the rotation</li>
-              <li><strong>Time and speed</strong> — control how fast the motion plays</li>
-              <li><strong>Rotation amount</strong> — controls how strong the motion is</li>
-            </ul>
+
+             <p>
+              The axis is chosen depending on the type of motion needed. By changing the axis i can decide the direction each part should rotate in.
+            </p>
+
             <p>
-              By changing these values, the same setup can be used for both continuous spinning motion
-              and softer back-and-forth movement. This made it possible to reuse the same subgraph for
-              multiple animated parts of the robot.
+              The movement itself is controlled by values such as time, speed, and rotation amount. 
+              These values are combined to create either continuous spinning motion or softer back and forth movement depending on how the subgraph is used.
             </p>
+
+            <p>
+              At the core of the setup is Unitys Rotate About Axis node. This node rotates a position around a chosen pivot point and axis by a given rotation value. 
+              In this case it is used to rotate both the vertex position and the normal so the mesh deforms and shades correctly as it moves.
+            </p>
+
+             <p>
+              Each of these rotation steps is then combined at the end. The output position from one subgraph can be passed into the next one and then into another. 
+              Allowing several motion layers to build on top of each other. This made it possible to create more complex animation by stacking multiple simple rotation setups together.
+            </p>
+
+          
           </div>
 
           <div class="project-hero-media">
@@ -335,16 +345,18 @@
         <div class="learned-panel">
           <ul>
             <li>
-              One of the biggest challenges was getting stable wheel motion. Early versions
-              relied too much on shader-only rotation, which caused flickering and snapping.
+              One of the main challenges was getting the wheel motion to feel right. At first i tried to calculate the wheel rotation directly in the shader math and using the angle values 
+              but the result felt unstable and looked off. From what I understood part of the issue was that some of the values being sent in were not updated every frame which made the motion inconsistent.
+              To solve this i moved the wheel rotation logic to C# instead. Rather than trying to calculate the full wheel rotation in the shader i calculated it in C# and passed the value into the shader directly. 
+              That gave me much more stable and predictable wheel motion.
             </li>
             <li>
-              Another challenge was balancing movement and turning in a way that felt readable
-              without becoming too mechanical.
+              Another challenge was making the animation feel visually appealing especially the small jittering or idle style movement. 
+              I wanted the robot to feel mechanical and animated 
+              but without making the motion too stiff or static. Finding that balance took some experimentation.
+              What helped was using sine waves layered together with different amplitudes and speeds. That gave the movement a less predictable feel and made the animation feel more alive.
             </li>
-            <li>
-              The scan state also took several iterations to keep simple while still feeling visually distinct.
-            </li>
+
           </ul>
         </div>
       </section>
@@ -357,9 +369,9 @@
 
         <div class="learned-panel">
           <ul>
-            <li>I would continue polishing the transitions between patrol, scan, and chase.</li>
-            <li>I would like to push the visual feedback further with more reactive emissive behavior.</li>
-            <li>I would also keep exploring more secondary motion to give the robot more character.</li>
+            <li>If I had more time one of the things I would have liked to add was a chase state. 
+              I think it would have been interesting to give the robot a more aggressive animation 
+              style in that state with faster movement and maybe quicker blinking to make it feel more intense.</li>
           </ul>
         </div>
       </section>
