@@ -416,6 +416,17 @@ body {
   object-position: center;
 }
 
+.project-image-cover {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: #d8d1bf;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
 .project-section {
   margin-bottom: clamp(32px, 5vw, 72px);
 }
@@ -502,6 +513,22 @@ body {
   object-fit: contain;
   background: transparent;
   aspect-ratio: auto;
+}
+
+.breakdown-row.full-width-video {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.breakdown-row.full-width-video .project-hero-media {
+  width: 100%;
+}
+
+.breakdown-row.full-width-video .project-video {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 
